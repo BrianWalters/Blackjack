@@ -2,10 +2,12 @@
 
 .bordered-demo-box
     background-color green
-    border 10px solid red
+    border-color red
+    border-style solid
+    border-width 10px
     color #FFF
     height 120px
-    line-height @height
+    line-height @height - @border-width * 2
     text-align center
     width @height
 
