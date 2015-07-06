@@ -43,13 +43,6 @@ module.exports = function ( grunt ) {
             options: {
                 "include css": true
             },
-            docroot: {
-                src: 'source/main.styl',
-                dest: 'docroot/main.css',
-                options: {
-                    compress: false
-                }
-            },
             gallery: {
                 src: 'gallery/gallery.styl',
                 dest: 'docroot/gallery.css',

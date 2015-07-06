@@ -1,0 +1,31 @@
+/*------------------------------------*\
+BREAKPOINTS
+
+Contains a helper function for building media query breakpoints
+
+This mixin expects a block. To invoke it and pass a block, use the + before the mixin name:
+
+this stylus:
+.my-class
+    +breakpoint(500px)
+        color green
+
+will yield:
+@media (min-width: 500px) {
+    .my-class {
+        color green
+    }
+}
+
+\*------------------------------------*/
+
+breakpoint(min = null, max = null)
+    if min and max
+        @media (min-width min) and (max-width max)
+            {block}
+    else if min
+        @media (min-width min)
+            {block}
+    else if max
+        @media (max-width max)
+            {block}

@@ -1,3 +1,5 @@
+@import '../source/main'
+
 .bordered-demo-box
     background-color green
     border 10px solid red
@@ -6,3 +8,19 @@
     line-height @height
     text-align center
     width @height
+
+.breakpoint-demo
+    font-size 24px
+    line-height 40px
+    text-align center
+
+    &:after
+        content 'Below 500px'
+
+    +breakpoint(500px, 1000px)
+        &:after
+            content 'Between 500px and 1000px'
+
+    +breakpoint(1000px)
+        &:after
+            content 'Above 1000px'
