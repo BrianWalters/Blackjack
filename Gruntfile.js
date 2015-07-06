@@ -49,6 +49,13 @@ module.exports = function ( grunt ) {
                 options: {
                     compress: false
                 }
+            },
+            gallery: {
+                src: 'gallery/gallery.styl',
+                dest: 'docroot/gallery.css',
+                options: {
+                    compress: false
+                }
             }
         },
 
@@ -63,7 +70,7 @@ module.exports = function ( grunt ) {
             },
 
             stylus: {
-                files: ['source/**/*.styl'],
+                files: ['**/*.styl'],
                 tasks: ['stylus']
             }
         }
