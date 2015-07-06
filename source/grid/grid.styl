@@ -1,0 +1,20 @@
+/*------------------------------------*\
+GRID
+\*------------------------------------*/
+defaultGutter = 0px
+
+grid-container()
+    clearfix()
+    flexbox()
+
+grid-cell(ratio = 1, gutter = defaultGutter, startGridAt = null)
+    width 100%
+
+    +makeBreakpoint(startGridAt)
+        float left
+        w = 100% * ratio
+        width w
+
+        &:not(:last-child)
+            margin-right gutter
+            width s('calc(%s - %s)', w, gutter)

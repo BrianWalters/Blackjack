@@ -3,6 +3,36 @@
 main
     text-align center
 
+gutter = 1vw
+breakpoint = 768px
+
+.grid-container
+    grid-container()
+    margin-bottom gutter
+
+gallery-cell()
+    background-color #DDD
+    border-radius 4px
+    font-size 1.5em
+    line-height 2.25em
+    text-align center
+
+.grid-cell-50-gutter
+    grid-cell(.5, gutter, breakpoint)
+    gallery-cell()
+
+.grid-cell-40
+    grid-cell(ratio: .4, startGridAt: breakpoint)
+    gallery-cell()
+
+.grid-cell-25
+    grid-cell(ratio: .25, startGridAt: breakpoint)
+    gallery-cell()
+
+.grid-cell-20
+    grid-cell(ratio: .2, startGridAt: breakpoint)
+    gallery-cell()
+
 .bordered-demo-box
     background-color green
     border-color red

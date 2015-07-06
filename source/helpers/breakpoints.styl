@@ -7,7 +7,7 @@ This mixin expects a block. To invoke it and pass a block, use the + before the 
 
 this stylus:
 .my-class
-    +breakpoint(500px)
+    +makeBreakpoint(500px)
         color green
 
 will yield:
@@ -19,7 +19,7 @@ will yield:
 
 \*------------------------------------*/
 
-breakpoint(min = null, max = null)
+makeBreakpoint(min = null, max = null)
     if min and max
         @media (min-width min) and (max-width max)
             {block}
@@ -29,3 +29,5 @@ breakpoint(min = null, max = null)
     else if max
         @media (max-width max)
             {block}
+    else
+        {block}
