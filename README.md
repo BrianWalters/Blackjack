@@ -10,4 +10,4 @@ A minimum level of work is always required when building CSS for a web site or a
 
 ## How do I use this?
 
-The `source` directory contains the good stuff. Use Stylus's `@import` to pull in `main.styl` to your project. Open it and comment out the parts you don't want, then you're good to go!  
+The `source` directory contains the good stuff. Use Stylus's `@import` to pull in `blackjack.styl` to your project. Open it and comment out the parts you don't want, then you're good to go!  
