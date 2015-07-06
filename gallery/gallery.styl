@@ -5,12 +5,13 @@ main
 
 gutter = 1vw
 breakpoint = 768px
+bigBreakpoint = 1024px
 
 .grid-container
-    grid-container()
+    gridContainer()
     margin-bottom gutter
 
-gallery-cell()
+galleryCell()
     background-color #DDD
     border-radius 4px
     font-size 1.5em
@@ -18,20 +19,37 @@ gallery-cell()
     text-align center
 
 .grid-cell-50-gutter
-    grid-cell(.5, gutter, breakpoint)
-    gallery-cell()
+    gridCell(.5, gutter, breakpoint)
+    galleryCell()
 
 .grid-cell-40
-    grid-cell(ratio: .4, startGridAt: breakpoint)
-    gallery-cell()
+    gridCell(ratio: .4, startGridAt: breakpoint)
+    galleryCell()
 
 .grid-cell-25
-    grid-cell(ratio: .25, startGridAt: breakpoint)
-    gallery-cell()
+    gridCell(ratio: .25, startGridAt: breakpoint)
+    galleryCell()
 
 .grid-cell-20
-    grid-cell(ratio: .2, startGridAt: breakpoint)
-    gallery-cell()
+    gridCell(ratio: .2, startGridAt: breakpoint)
+    galleryCell()
+
+.grid-cell-1-7-gutter
+    gridCell(1/7, gutter, breakpoint)
+    galleryCell()
+
+.grid-cell-3-5-gutter
+    gridCell(3/5, gutter, breakpoint)
+    galleryCell()
+
+.grid-cell-1-5-gutter
+    gridCell(1/5, gutter, breakpoint)
+    galleryCell()
+
+.double-breakpoint-cell
+    gridCell(1/3, gutter, breakpoint)
+    gridCell(1/6, gutter, bigBreakpoint)
+    galleryCell()
 
 .bordered-demo-box
     background-color green
