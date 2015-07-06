@@ -1,0 +1,41 @@
+/*------------------------------------*\
+SPACING HELPERS
+
+Contains one-shot helpers for adding space to an element's box model
+
+If you need to give space to an element but it doesn't warrant creating a new class,
+you can use one of these helpers.
+
+If you use _MORE THAN TWO_ helpers on one element
+you'll be better off creating a class for the element,
+and putting all the rules on that class.
+
+Use as:
+
+.gap //Gives 10px margin all around
+
+.double-gap-bottom //Gives 20px margin-bottom
+
+.triple-padding-right //Gives 30px padding-right
+\*------------------------------------*/
+
+//Base distance. Can be in px, rem, ex, whatever.
+baseDistance = 10px
+
+//Sides to make helpers for
+sideSuffixes = '' '-top' '-right' '-bottom' '-left'
+
+//Distances. First in each array is a label, second is a css distance.
+distances = ('half-' (baseDistance / 2)) ('' baseDistance) ('double-' baseDistance * 2) ('triple-' baseDistance * 3) ('quad-' baseDistance * 4)
+
+//Properties that will have helpers.
+//First in each array is a label that will go in the class name.
+//Second is the css property.
+propertiesWithLabels = ('gap' 'margin') ('pad' 'padding')
+
+//Generates the helpers
+for distance in distances
+    for sideSuffix in sideSuffixes
+        for propertyWithLabel in propertiesWithLabels
+            .{distance[0]}{propertyWithLabel[0]}{sideSuffix}
+                {propertyWithLabel[1]}{sideSuffix} distance[1]

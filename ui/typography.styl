@@ -1,0 +1,55 @@
+/*------------------------------------*\
+TYPOGRAPHY
+
+Basic typography for function and readability.
+Includes a fontStack() mixin.
+Variables for customization.
+
+Helpers for text alignment
+.align-left
+.align-center
+.align-right
+\*------------------------------------*/
+
+/**
+ * Alter these variables to match your project.
+ */
+baseFontColor = #363636
+baseFontSize = 16px
+baseLineHeight = 1.5
+fontFamily = Helvetica, Arial, Geneva, sans-serif
+
+fontStack()
+    color baseFontColor
+    font-family fontFamily
+    font-size baseFontSize
+    line-height baseLineHeight
+
+body
+h1, h2, h3, h4, h5, h6
+    fontStack()
+
+h1
+    font-size 2.333em
+
+h2
+    font-size 2em
+
+h3
+    font-size 1.5em
+
+h4
+    font-size 1.333em
+
+h5
+h6
+    font-size 1.1666em
+
+.align-left
+    text-align left
+
+.align-right
+    text-align right
+
+.align-center
+    text-align center

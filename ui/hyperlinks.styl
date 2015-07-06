@@ -1,0 +1,24 @@
+/*------------------------------------*\
+HYPERLINKS
+
+Sets a baseline for hyperlinks/anchors
+\*------------------------------------*/
+
+/**
+ * Alter these variables to match your project.
+ */
+linkColor = #245a91
+linkActive = #198d98
+
+hyperlink()
+    color linkColor
+    text-decoration none
+
+    &:hover
+    &:focus
+        color linkActive
+
+linkSelectors = 'a,a:visited'
+
+{linkSelectors}
+    hyperlink()

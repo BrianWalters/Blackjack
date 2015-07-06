@@ -1,0 +1,28 @@
+/*------------------------------------*\
+ROTATION
+
+Quickly rotate an element.
+
+Goes clockwise and counter-clockwise:
+
+.rotate-90
+.rotate-90-ctr //Goes counter-clockwise
+
+Use the rotate() mixin to define a custom angle.
+
+.my-class
+    rotateBy(45)
+\*------------------------------------*/
+
+rotateClassPrefix = 'rotate-'
+
+rotateValues = 90 180 270
+
+for rotateValue in rotateValues
+    .{rotateClassPrefix}{rotateValue}
+        transform 'rotate(%sdeg)' % rotateValue
+    .{rotateClassPrefix}{rotateValue}-ctr
+        transform 'rotate(%sdeg)' % (rotateValue * -1)
+
+rotateBy(angle)
+    transform 'rotate(%sdeg)' % angle

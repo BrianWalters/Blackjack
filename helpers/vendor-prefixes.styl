@@ -1,0 +1,75 @@
+/*------------------------------------*\
+VENDOR PREFIXES
+
+Stylus has transparent mixins http://learnboost.github.io/stylus/docs/mixins.html
+
+We can add in vendor prefixes here, as mixins, for certain properties
+and then write styles in the main code base without worry
+
+Keep properties here in alphabetical order, for quick reference
+
+Example:
+.my-class
+    animation shake 100ms infinite
+
+This is equivalent to
+.my-class
+    animation(shake 100ms infinite)
+
+And parses into:
+.my-class {
+  -webkit-animation shake 100ms infinite
+  -o-animation shake 100ms infinite
+  animation shake 100ms infinite
+}
+\*------------------------------------*/
+
+appearance()
+    -webkit-appearance arguments
+    -moz-appearance arguments
+    appearance arguments
+
+animation()
+    -webkit-animation arguments
+    -o-animation arguments
+    animation arguments
+
+animation-duration()
+    -webkit-animation-duration arguments
+    -o-animation-duration arguments
+    animation-duration arguments
+
+animation-name()
+    -webkit-animation-name arguments
+    -o-animation-name arguments
+    animation-name arguments
+
+backface-visibility()
+    -webkit-backface-visibility arguments
+    -moz-backface-visibility arguments
+    backface-visibility arguments
+
+box-sizing()
+    -webkit-box-sizing arguments
+    -moz-box-sizing arguments
+    box-sizing arguments
+
+font-smoothing()
+    -webkit-font-smoothing arguments
+    font-smoothing arguments
+
+transform()
+    -webkit-transform arguments
+    -ms-transform arguments
+    transform arguments
+
+transform-origin()
+    -webkit-transform-origin arguments
+    -ms-transform-origin arguments
+    transform-origin arguments
+
+user-select()
+    -webkit-user-select arguments
+    -moz-user-select arguments
+    -ms-user-select arguments
+    user-select arguments

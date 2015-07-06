@@ -1,0 +1,53 @@
+/*------------------------------------*\
+MAIN.STYL
+
+Learn about stylus, a nodeJS CSS Preprocessor:
+http://learnboost.github.io/stylus/
+
+Parts of the app styles are meant to be modular.
+Comment out parts you don't want.
+\*------------------------------------*/
+
+/**
+ * RESETS
+ *
+ * Resets are global changes to elements on the entire document.
+ * A few are included to override default behavior into something
+ * that's easier to work with.
+ */
+@import 'resets/zero'
+@import 'resets/box-sizing'
+@import 'resets/image'
+
+
+/**
+ * HELPERS
+ *
+ * Styles, Mixins, or Functions meant to make things easier.
+ * For use with multiple components in your app.
+ * Some are transparent and automatically work.
+ * Others are classes you can tack on to element or @extend.
+ * Some are functions you should call with arguments.
+ */
+@import 'helpers/vendor-prefixes'
+@import 'helpers/flexbox'
+@import 'helpers/spacing'
+@import 'helpers/position'
+@import 'helpers/rotation'
+@import 'helpers/float'
+@import 'helpers/lists'
+
+
+/**
+ * UI
+ *
+ * Establishing a baseline for visual look and feel.
+ * Commonly used UI elements.
+ */
+@import 'ui/animations'
+@import 'ui/typography'
+@import 'ui/hyperlinks'
+@import 'ui/buttons'
+@import 'ui/forms'
+@import 'ui/zebra-list'
+@import 'ui/tables'

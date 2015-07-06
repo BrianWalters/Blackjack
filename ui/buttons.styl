@@ -1,0 +1,81 @@
+/*------------------------------------*\
+BUTTONS
+
+Creates look and feel for buttons
+
+Provides mixin and class:
+button() or .button
+
+Add .square to remove radius.
+
+states that can be added with classes:
+.info
+.success
+.error
+.busy //Adds a spinner
+.disabled //Fades the button
+
+You can disable a button with the attribute aria-disabled:
+<div class="button" aria-disabled="true">Label</div>
+\*------------------------------------*/
+baseButtonColor = #CCC
+buttonBorderColor = #DDD
+
+extraButtonStates = (info #309dd4) (success #67b646) (error #b84c4c)
+
+button()
+    appearance none
+    background-color baseButtonColor
+    border 1px solid buttonBorderColor
+    border-radius 4px
+    cursor pointer
+    display inline-block
+    fontStack()
+    font-weight 700
+    height auto
+    line-height 1.5
+    padding .25em 1em
+    text-align center
+    text-decoration none
+    transition background-color .35s
+    width auto
+    word-wrap break-word
+
+    &.square
+        border-radius 0px
+
+    &:hover
+    &:focus
+    &.active
+        background-color darken(baseButtonColor, 20%)
+
+    &[disabled]
+    &[disabled="disabled"]
+    &[aria-disabled="true"]
+    &.disabled
+        background-color lighten(baseButtonColor, 20%)
+        color lighten(baseFontColor, 30%)
+        cursor not-allowed
+        outline none
+
+    &.busy:after
+        content "\f110"
+        display inline-block
+        font-family FontAwesome
+        margin-left .25em
+        spin()
+
+    for state in extraButtonStates
+        &.{state[0]}
+            background-color state[1]
+            color #FFF
+
+            &:hover
+            &:focus
+            &.active
+                background-color darken(state[1], 20%)
+
+buttonSelectors = 'button,.button,a.button,a.button:visited,[role="button"]'
+
+{buttonSelectors}
+    button()

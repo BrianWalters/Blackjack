@@ -1,0 +1,69 @@
+/*------------------------------------*\
+FLEXBOX
+
+Read more here: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+These mixins help backwards compatibility of flex properties, since the
+spec has changed over their development
+Flex is not supported in IE9
+
+Place flexbox() on a style to invoke
+
+All other mixins here are transparent
+\*------------------------------------*/
+flexbox()
+    display -webkit-box
+    display -moz-box
+    display -ms-flexbox
+    display -webkit-flex
+    display flex
+
+flex()
+    -webkit-box-flex arguments
+    -moz-box-flex arguments
+    -webkit-flex arguments
+    -ms-flex arguments
+    flex arguments
+
+order()
+    -webkit-box-ordinal-group arguments
+    -moz-box-ordinal-group arguments
+    -ms-flex-order arguments
+    -webkit-order arguments
+    order arguments
+
+flex-wrap()
+    -webkit-flex-wrap arguments
+    -ms-flex-wrap arguments
+    flex-wrap arguments
+
+flex-direction()
+    -webkit-flex-direction arguments
+    -ms-flex-direction arguments
+    flex-direction arguments
+
+align-items()
+    -webkit-align-items arguments
+    -ms-flex-align convert-for-ie-ten(arguments)
+    align-items arguments
+
+align-self()
+    -webkit-align-self arguments
+    -ms-flex-item-align convert-for-ie-ten(arguments)
+    align-self arguments
+
+justify-content()
+    -webkit-justify-content arguments
+    -ms-flex-pack convert-for-ie-ten(arguments)
+    justify-content arguments
+
+convert-for-ie-ten(keyword)
+    if keyword is flex-start
+        start
+    else if keyword is flex-end
+        end
+    else if keyword is space-between
+        justify
+    else if keyword is space-around
+        distribute
+    else
+        keyword
