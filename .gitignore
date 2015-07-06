@@ -3,3 +3,5 @@
 *.tmproj
 *.swp
 *.swo
+node_modules
+docroot
