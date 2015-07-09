@@ -1,6 +1,11 @@
 /*------------------------------------*\
 GRID
+
+Mixins for creating grid rows.
+Uses flexbox but has float fallbacks.
 \*------------------------------------*/
+
+//Declare a default gutter if none is passed as an argument
 defaultGutter = 0px
 
 gridContainer()
@@ -8,7 +13,7 @@ gridContainer()
     flexbox()
     flex-wrap wrap
 
-gridCell(ratio = 1, gutter = defaultGutter, startGridAt = null)
+gridCell(ratio = 1, gutter = defaultGutter, startGridAt = null, cycle = null)
     width 100%
 
     +makeBreakpoint(startGridAt)
@@ -17,5 +22,11 @@ gridCell(ratio = 1, gutter = defaultGutter, startGridAt = null)
         width w
         width s('calc(100% * %s - %s + %s * %s)', ratio, gutter, ratio, gutter)
 
-        &:not(:last-child)
-            margin-right gutter
+        if cycle
+            &:not(:nth-child({cycle}n))
+                margin-right gutter
+            &:nth-child({cycle}n+1)
+                clear left
+        else
+            &:not(:last-child)
+                margin-right gutter
