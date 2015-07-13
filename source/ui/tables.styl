@@ -1,17 +1,29 @@
 /*------------------------------------*\
 TABLES
 
-Don't use tables. Make your component with flexbox instead.
+Converts tables into a strong flexbox display.
 \*------------------------------------*/
 table
     width 100%
 
-    tr
-        display none
+thead, tbody
+    flexbox()
+    flex-direction column
+    flex-wrap nowrap
+    justify-content space-between
 
-    &:after
-        content "Don't use tables."
-        color #ef3340
-        display block
-        text-align center
-        width 100%
+thead tr
+    background #CCC
+
+tr
+    flexbox()
+    flex-direction row
+    flex-wrap nowrap
+    width 100%
+
+    &:nth-child(2n)
+        background #DDD
+
+td, th
+    flex 1 0 0px
+    padding .5em
