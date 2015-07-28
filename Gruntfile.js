@@ -41,7 +41,12 @@ module.exports = function ( grunt ) {
 
         stylus: {
             options: {
-                "include css": true
+                "include css": true,
+                use: [
+                    function() {
+                        return require('autoprefixer-stylus')('last 2 versions', 'ie 8', 'ie 9');
+                    }
+                ]
             },
             gallery: {
                 src: 'gallery/gallery.styl',
@@ -82,4 +87,6 @@ module.exports = function ( grunt ) {
         'connect:serve',
         'watch'
     ]);
+
+    grunt.registerTask('default', ['build']);
 };
