@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=BGi6Q1pNbS0
 
 ## Why should I use this?
 
-A minimum level of work is always required when building CSS for a web site or application. Every project you work on will need things such as vendor prefixes, resets, helper classes, and a whole mess of other parts. Instead of re-inventing the wheel, Blackjack gives you a starting place for your CSS. It's engineered to be re-usable across projects and easy to drop into any Stylus codebase.
+A minimum level of work is always required when building CSS for a web site or application. Every project you work on will need things such as resets, helper classes, and a whole mess of other parts. Instead of re-inventing the wheel, Blackjack gives you a starting place for your CSS. It's engineered to be re-usable across projects and easy to drop into any Stylus codebase.
 
 ## How do I use this?
 
@@ -21,9 +21,7 @@ Zeros out all margins, padding and borders. Sets box-sizing to border-box. Sets 
 ### Helpers
 
 - Function to build media-query breakpoints with just a couple arguments.
-- Adds commonly needed vendor prefixes transparently.
 - Helper classes for one-shot styles, such as margin, padding, float, position, rotation, etc.
-- A set of mixins to assist with flexbox styling.
 
 ### Grid
 
