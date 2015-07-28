@@ -2,6 +2,7 @@
   "name": "stylus-demo",
   "version": "0.0.1",
   "devDependencies": {
+    "autoprefixer-stylus": "^0.7.1",
     "connect-modrewrite": "^0.7.9",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",

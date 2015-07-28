@@ -73,10 +73,10 @@ galleryCell()
     &:after
         content 'Below 500px'
 
-    +breakpoint(500px, 1000px)
+    +makeBreakpoint(500px, 1000px)
         &:after
             content 'Between 500px and 1000px'
 
-    +breakpoint(1000px)
+    +makeBreakpoint(1000px)
         &:after
             content 'Above 1000px'
