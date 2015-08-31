@@ -1,0 +1,20 @@
+{
+  "name": "Blackjack",
+  "version": "1.0.0",
+  "homepage": "https://github.com/BrianWalters/Blackjack",
+  "authors": [
+    "Brian Walters <brianw@pixotech.com>"
+  ],
+  "description": "A CSS Toolkit written in Stylus",
+  "main": "source/blackjack.styl",
+  "keywords": [
+    "CSS"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
