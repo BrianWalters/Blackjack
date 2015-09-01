@@ -98,6 +98,7 @@ module.exports = function ( grunt ) {
     ]);
 
     grunt.registerTask( 'publish', 'Publishes the gh-pages branch', [
+        'build',
         'gh-pages'
     ]);
 
