@@ -36,6 +36,17 @@ module.exports = function ( grunt ) {
                     dest: 'docroot/',
                     expand: true
                 }]
+            },
+            sampleConfig: {
+                options: {
+                    process: function (content, srcpath) {
+                        content = content.replace(/[ ]{4}/g, "");
+                        content = content.replace(/(unless)(.+)(\n)/g, "");
+                        return content;
+                    }
+                },
+                src: 'source/blackjack-defaults.styl',
+                dest: 'sample-config.styl'
             }
         },
 
@@ -100,6 +111,10 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'publish', 'Publishes the gh-pages branch', [
         'build',
         'gh-pages'
+    ]);
+
+    grunt.registerTask( 'sample', 'Rebuilds the sample config', [
+        'copy:sampleConfig'
     ]);
 
     grunt.registerTask('default', ['build']);
