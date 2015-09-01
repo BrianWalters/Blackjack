@@ -5,6 +5,8 @@ Converts tables into a strong flexbox display.
 
 Configurable variables:
 flexboxTableSelectors
+flexboxTableHeaderRowColor
+flexboxTableZebraRowColor
 \*------------------------------------*/
 
 flexboxTable()
@@ -17,7 +19,7 @@ flexboxTable()
         justify-content space-between
 
     thead tr
-        background #CCC
+        background flexboxTableHeaderRowColor
 
     tr
         display flex
@@ -26,7 +28,7 @@ flexboxTable()
         width 100%
 
         &:nth-child(2n)
-            background #DDD
+            background flexboxTableZebraRowColor
 
     td, th
         flex 1 0 0px
