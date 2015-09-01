@@ -39,12 +39,21 @@ module.exports = function ( grunt ) {
             }
         },
 
+        'gh-pages': {
+            gallery: {
+                options: {
+                    base: 'docroot'
+                },
+                src: ['**/*']
+            }
+        },
+
         stylus: {
             options: {
                 "include css": true,
                 use: [
                     function() {
-                        return require('autoprefixer-stylus')('last 2 versions', 'ie 8', 'ie 9');
+                        return require('autoprefixer-stylus')('last 2 versions', 'ie 8', 'ie 9', 'ie 10');
                     }
                 ]
             },
@@ -86,6 +95,10 @@ module.exports = function ( grunt ) {
         'build',
         'connect:serve',
         'watch'
+    ]);
+
+    grunt.registerTask( 'publish', 'Publishes the gh-pages branch', [
+        'gh-pages'
     ]);
 
     grunt.registerTask('default', ['build']);
