@@ -3,35 +3,34 @@ FORMS
 
 Sets a minimum visual for text form fields,
 such as input type="text", textarea, and select
-\*------------------------------------*/
 
-borderStyle = 1px solid #CCC
-errorColor = #b84c4c
+Configurable variables:
+fieldBorderStyle
+errorColor
+fieldSelectors
+
+\*------------------------------------*/
 
 field()
     background-color #FFF
-    border borderStyle
+    border fieldBorderStyle
     border-radius 4px
     display block
     font-family monospace
     font-size 1em
-    height 2.25em
     padding .4em
     max-width 100%
     width 100%
 
+    &:not(textarea)
+        height 2.25em
+
     &.error
         background-color rgba(errorColor, 50%)
 
-input:not([type="checkbox"]):not([type="radio"])
-    field()
-
-textarea
-    field()
-    height auto
-
-select
-    field()
+if fieldSelectors
+    {fieldSelectors}
+        field()
 
 /**
  * TODO: Add Radios and Checkboxes

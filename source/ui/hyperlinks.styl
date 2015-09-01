@@ -2,13 +2,12 @@
 HYPERLINKS
 
 Sets a baseline for hyperlinks/anchors
-\*------------------------------------*/
 
-/**
- * Alter these variables to match your project.
- */
-linkColor = #245a91
-linkActive = #198d98
+Configurable variables:
+linkColor
+linkHover
+linkSelectors
+\*------------------------------------*/
 
 hyperlink()
     color linkColor
@@ -16,9 +15,8 @@ hyperlink()
 
     &:hover
     &:focus
-        color linkActive
+        color linkHover
 
-linkSelectors = 'a,a:visited'
-
-{linkSelectors}
-    hyperlink()
+if linkSelectors
+    {linkSelectors}
+        hyperlink()

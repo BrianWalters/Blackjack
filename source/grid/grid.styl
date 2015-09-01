@@ -2,18 +2,37 @@
 GRID
 
 Mixins for creating grid rows.
-Uses flexbox but has float fallbacks.
-\*------------------------------------*/
 
-//Declare a default gutter if none is passed as an argument
-defaultGutter = 0px
+Uses flexbox but has float fallbacks.
+
+ratio
+How much of the row each grid cell should occupy.
+Accepts decimals or fractions.
+
+gutter
+Space between each cell.
+Default 0px, unless configured differently.
+
+startGridAt
+An argument that accepts a breakpoint.
+The grid cells will be single column until it reaches that breakpoint,
+after the breakpoint the cells will form a row.
+
+cycle
+If the row is expected to wrap, the cycle value should be
+the expected number of cells on each row.
+
+
+Configurable variables:
+defaultGridGutter
+\*------------------------------------*/
 
 gridContainer()
     clearfix()
     display flex
     flex-wrap wrap
 
-gridCell(ratio = 1, gutter = defaultGutter, startGridAt = null, cycle = null)
+gridCell(ratio = 1, gutter = defaultGridGutter, startGridAt = null, cycle = null)
     width 100%
 
     +makeBreakpoint(startGridAt)

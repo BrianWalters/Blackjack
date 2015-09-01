@@ -2,12 +2,16 @@
 ZEBRA LIST
 
 Attach class or mixin to a list to give striped rows.
+
+Configurable variables:
+zebraColor
+zebraSelectors
 \*------------------------------------*/
-zebraColor = #ddd
 
 zebraList()
     & > li:nth-child(2n)
         background-color #ddd
 
-.zebra-list
-    zebraList()
+if zebraSelectors
+    {zebraSelectors}
+        zebraList()

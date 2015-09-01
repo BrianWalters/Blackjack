@@ -17,11 +17,13 @@ states that can be added with classes:
 
 You can disable a button with the attribute aria-disabled:
 <div class="button" aria-disabled="true">Label</div>
-\*------------------------------------*/
-baseButtonColor = #CCC
-buttonBorderColor = #DDD
 
-extraButtonStates = (info #309dd4) (success #67b646) (error #b84c4c)
+Configurable variables:
+baseButtonColor
+buttonBorderColor
+extraButtonStates
+buttonSelectors
+\*------------------------------------*/
 
 button()
     appearance none
@@ -75,7 +77,6 @@ button()
             &.active
                 background-color darken(state[1], 20%)
 
-buttonSelectors = 'button,.button,a.button,a.button:visited,[role="button"]'
-
-{buttonSelectors}
-    button()
+if buttonSelectors
+    {buttonSelectors}
+        button()

@@ -2,28 +2,36 @@
 TABLES
 
 Converts tables into a strong flexbox display.
+
+Configurable variables:
+flexboxTableSelectors
 \*------------------------------------*/
-table
+
+flexboxTable()
     width 100%
 
-thead, tbody
-    display flex
-    flex-direction column
-    flex-wrap nowrap
-    justify-content space-between
+    thead, tbody
+        display flex
+        flex-direction column
+        flex-wrap nowrap
+        justify-content space-between
 
-thead tr
-    background #CCC
+    thead tr
+        background #CCC
 
-tr
-    display flex
-    flex-direction row
-    flex-wrap nowrap
-    width 100%
+    tr
+        display flex
+        flex-direction row
+        flex-wrap nowrap
+        width 100%
 
-    &:nth-child(2n)
-        background #DDD
+        &:nth-child(2n)
+            background #DDD
 
-td, th
-    flex 1 0 0px
-    padding .5em
+    td, th
+        flex 1 0 0px
+        padding .5em
+
+if flexboxTableSelectors
+    {flexboxTableSelectors}
+        flexboxTable()
