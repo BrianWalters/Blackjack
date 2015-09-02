@@ -5,139 +5,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+    <div class="primary-container">
 
-<main>
-    <h1>Welcome to Blackjack</h1>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/BGi6Q1pNbS0" frameborder="0" allowfullscreen></iframe>
-    <p>Blackjack is a collection of mixins, functions and helpers written in Stylus to make your front-end development easier and faster.</p>
-</main>
+        <main class="introduction">
+            <h1 class="page-header">Welcome to Blackjack</h1>
+            <div class="introduction__row">
+                <div class="introduction__abstract">
+                    <p>Blackjack is a collection of mixins, functions and helpers written in Stylus to make your front-end development easier and faster.</p>
+                    <p>Blackjack is not a flattened CSS file that you include with your source. It's meant for advanced
+                        developers who understand the power of a CSS preprocessor.</p>
+                    <p>Blackjack is written in Stylus and meant to be included directly into your Stylus source. By default,
+                        Blackjack will add some sensible resets to certain HTML elements, but this is meant as a starting
+                        point rather than an end-all (this is <em>not</em> Bootstrap). You can configure Blackjack to a
+                        point where it doesn't spit out any opinionated CSS on its own other than basic resets.</p>
+                </div>
+                <div class="bender-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BGi6Q1pNbS0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
 
-<section>
-    <h2>Grid</h2>
-    <div class="grid-container">
-        <div class="grid-cell-25">.25</div>
-        <div class="grid-cell-25">.25</div>
-        <div class="grid-cell-25">.25</div>
-        <div class="grid-cell-25">.25</div>
+            <div class="introduction__row">
+                <div class="introduction__explanation">
+                    <h2>Mix it in</h2>
+                    <p>When you include Blackjack, you have the power to mixin parts you like
+                        and leave out the parts you don't.</p>
+                    <p>More importantly, behavior stays in your stylesheets instead of leaking into your markup.
+                        Keep your HTML clean by naming your elements one time and mixing in behavior on that class.
+                        This closely fits <a href="https://css-tricks.com/bem-101/">BEM</a> style of writing CSS.</p>
+                </div>
+                <div class="introduction__features">
+                    <h2>Features</h2>
+                    <ul class="feature-list">
+                        <li>Doesn't overload your CSS with opinionated resets.</li>
+                        <li>Creates robust grid rows.</li>
+                        <li>Helper for creating breakpoints.</li>
+                        <li>Converts tables into a flexbox layout.</li>
+                        <li>A smart starting point for buttons, forms, and other commonly used UI.</li>
+                        <li>Don't battle a CSS framework to make your product the way you want it. Mix in Blackjack
+                            when it saves you time, ignore it when it doesn't!</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <section class="grid-section">
+            <h2>Grid</h2>
+            <p>Blackjack can quickly make rows of content. They are built with a flexbox layout but include floats as a
+                fallback. You can set a gutter. Also a breakpoint where the cells stack up in a single column.</p>
+            <p>It's done with the <code>gridCell</code> mixin and the optional <code>gridContainer</code> mixin.</p>
+            <dl>
+                <dt><code>gridContainer</code></dt>
+                <dd>A mixin that requires no arguments. Put this around your cells if you need clearfix or flexbox
+                    behavior. Not required but recommended.</dd>
+                <dt><code>gridCell</code></dt>
+                <dd>
+                    <p>Takes four arguments:</p>
+                    <ul>
+                        <li><code>ratio</code> Fraction or decimal representing how much of the grid row the
+                            cell should take.</li>
+                        <li><code>startGridAt</code> Grid cells stack on each other until the viewport reaches
+                            this passed breakpoint, then the grid row appears. Mobile-first mindset.</li>
+                        <li><code>gutter</code> Space between grid cells.</li>
+                        <li><code>cellsPerRow</code> If the grid cells are expected to wrap, enter the
+                            number of cells on each row.</li>
+                    </ul>
+                    <p>For anything meaningful, <code>ratio</code> and <code>startGridAt</code> should be set.
+                    You can skip arguments because Stylus accepts <a
+                        href="http://learnboost.github.io/stylus/docs/functions.html#named-parameters">Named
+                            Parameters</a>.</p>
+                </dd>
+            </dl>
+            <div class="grid-container">
+                <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
+                <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
+                <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
+                <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-cell-40"><code>gridCell(.4, 768px)</code></div>
+                <div class="grid-cell-40"><code>gridCell(.4, 768px)</code></div>
+                <div class="grid-cell-20"><code>gridCell(.2, 768px)</code></div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-cell-50-gutter"><code>gridCell(.5, 768px, 1vw)</code></div>
+                <div class="grid-cell-50-gutter"><code>gridCell(.5, 768px, 1vw)</code></div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-cell-1-5-gutter"><code>gridCell(1/5, 768px, 1vw)</code></div>
+                <div class="grid-cell-3-5-gutter"><code>gridCell(3/5, 768px, 1vw)</code></div>
+                <div class="grid-cell-1-5-gutter"><code>gridCell(1/5, 768px, 1vw)</code></div>
+            </div>
+
+            <div class="grid-container">
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+                <div class="double-breakpoint-cell"><code>gridCell(1/2, breakpoint, gutter, 2)<br>gridCell(1/3, bigBreakpoint, gutter, 3)</code></div>
+            </div>
+
+            <div class="grid-container">
+                <div class="double-breakpoint-cell-two"><code>gridCell(1/3, breakpoint, gutter, 3)<br>gridCell(1/5, bigBreakpoint, gutter)</code></div>
+                <div class="double-breakpoint-cell-two"><code>gridCell(1/3, breakpoint, gutter, 3)<br>gridCell(1/5, bigBreakpoint, gutter)</code></div>
+                <div class="double-breakpoint-cell-two"><code>gridCell(1/3, breakpoint, gutter, 3)<br>gridCell(1/5, bigBreakpoint, gutter)</code></div>
+                <div class="double-breakpoint-cell-two"><code>gridCell(1/3, breakpoint, gutter, 3)<br>gridCell(1/5, bigBreakpoint, gutter)</code></div>
+                <div class="double-breakpoint-cell-two"><code>gridCell(1/3, breakpoint, gutter, 3)<br>gridCell(1/5, bigBreakpoint, gutter)</code></div>
+            </div>
+        </section>
+
+        <section>
+
+            <h2>Animations</h2>
+            <div class="bordered-demo-box spin">Spin</div>
+            <div class="bordered-demo-box shake">Shake</div>
+
+        </section>
+
+        <section>
+            <h2>Breakpoint helper</h2>
+            <div class="breakpoint-demo"></div>
+        </section>
+
+        <section>
+            <h2>Tables</h2>
+
+            <h3>Standard table</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Column one with really long header</th>
+                    <th>Column two</th>
+                    <th>Column three</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Datum one</td>
+                    <td>Datum two</td>
+                    <td>Datum three</td>
+                </tr>
+                <tr>
+                    <td>Datum one</td>
+                    <td>Datum two</td>
+                    <td>Datum three</td>
+                </tr>
+                <tr>
+                    <td>Datum one</td>
+                    <td>Bacon ipsum dolor amet shankle brisket rump hamburger ground round kevin jowl, corned beef filet mignon ball tip. Chuck ribeye spare ribs cupim. Rump corned beef swine, strip steak hamburger sausage landjaeger capicola shankle drumstick. Ball tip salami biltong, spare ribs leberkas boudin pork belly.</td>
+                    <td>Datum three</td>
+                </tr>
+                <tr>
+                    <td>Datum one</td>
+                    <td>Datum two</td>
+                    <td>Ham hock bacon corned beef shoulder brisket sausage filet mignon landjaeger prosciutto boudin salami pig pork belly meatloaf capicola.</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Zebra list</h2>
+            <ul class="zebra-list">
+                <li>Foo</li>
+                <li>Bar</li>
+                <li>Baz</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Forms</h2>
+
+            <div class="grid-container">
+                <div class="third">
+                    <input type="text" placeholder="Enter text">
+                </div>
+                <div class="third">
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="third">
+                    <textarea>Foo bar baz</textarea>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-    <div class="grid-container">
-        <div class="grid-cell-40">.4</div>
-        <div class="grid-cell-40">.4</div>
-        <div class="grid-cell-20">.2</div>
-    </div>
-
-    <div class="grid-container">
-        <div class="grid-cell-50-gutter">.5 with gutter</div>
-        <div class="grid-cell-50-gutter">.5 with gutter</div>
-    </div>
-
-    <div class="grid-container">
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-        <div class="grid-cell-1-7-gutter">1/7 with gutter</div>
-    </div>
-
-    <div class="grid-container">
-        <div class="grid-cell-1-5-gutter">1/5 with gutter</div>
-        <div class="grid-cell-3-5-gutter">3/5 with gutter</div>
-        <div class="grid-cell-1-5-gutter">1/5 with gutter</div>
-    </div>
-
-    <div class="grid-container">
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-        <div class="double-breakpoint-cell">1/6 at 1024px;<br>1/3 at 768px;</div>
-    </div>
-</section>
-
-<section>
-
-    <h2>Animations</h2>
-    <div class="bordered-demo-box spin">Spin</div>
-    <div class="bordered-demo-box shake">Shake</div>
-
-</section>
-
-<section>
-    <h2>Breakpoint helper</h2>
-    <div class="breakpoint-demo"></div>
-</section>
-
-<section>
-    <h2>Tables</h2>
-
-    <h3>Standard table</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Column one with really long header</th>
-                <th>Column two</th>
-                <th>Column three</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Datum one</td>
-                <td>Datum two</td>
-                <td>Datum three</td>
-            </tr>
-            <tr>
-                <td>Datum one</td>
-                <td>Datum two</td>
-                <td>Datum three</td>
-            </tr>
-            <tr>
-                <td>Datum one</td>
-                <td>Bacon ipsum dolor amet shankle brisket rump hamburger ground round kevin jowl, corned beef filet mignon ball tip. Chuck ribeye spare ribs cupim. Rump corned beef swine, strip steak hamburger sausage landjaeger capicola shankle drumstick. Ball tip salami biltong, spare ribs leberkas boudin pork belly.</td>
-                <td>Datum three</td>
-            </tr>
-            <tr>
-                <td>Datum one</td>
-                <td>Datum two</td>
-                <td>Ham hock bacon corned beef shoulder brisket sausage filet mignon landjaeger prosciutto boudin salami pig pork belly meatloaf capicola.</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-<section>
-    <h2>Zebra list</h2>
-    <ul class="zebra-list">
-        <li>Foo</li>
-        <li>Bar</li>
-        <li>Baz</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Forms</h2>
-
-    <div class="grid-container">
-        <div class="third">
-            <input type="text" placeholder="Enter text">
-        </div>
-        <div class="third">
-            <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-        </div>
-        <div class="third">
-            <textarea>Foo bar baz</textarea>
-        </div>
-    </div>
-</section>
 
 </body>
 
