@@ -12,43 +12,45 @@ Helpers for text alignment
 .align-right
 
 Configurable variables:
+resetType
 baseFontColor
 baseFontSize
 baseLineHeight
 fontFamily
 \*------------------------------------*/
 
-fontStack()
-    color baseFontColor
-    font-family fontFamily
-    font-size baseFontSize
-    line-height baseLineHeight
-
-body
-h1, h2, h3, h4, h5, h6
+if resetType
     fontStack()
+        color baseFontColor
+        font-family fontFamily
+        font-size baseFontSize
+        line-height baseLineHeight
 
-h1
-    font-size 2.333em
+    body
+    h1, h2, h3, h4, h5, h6
+        fontStack()
 
-h2
-    font-size 2em
+    h1
+        font-size 2.333em
 
-h3
-    font-size 1.5em
+    h2
+        font-size 2em
 
-h4
-    font-size 1.333em
+    h3
+        font-size 1.5em
 
-h5
-h6
-    font-size 1.1666em
+    h4
+        font-size 1.333em
 
-.align-left
-    text-align left
+    h5
+    h6
+        font-size 1.1666em
 
-.align-right
-    text-align right
+    .align-left
+        text-align left
 
-.align-center
-    text-align center
+    .align-right
+        text-align right
+
+    .align-center
+        text-align center

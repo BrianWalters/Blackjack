@@ -46,12 +46,14 @@ unless linkSelectors is defined
 //Tables
 unless flexboxTableSelectors is defined
     flexboxTableSelectors = 'table'
-unless flexboxTableHeaderRowColor
+unless flexboxTableHeaderRowColor is defined
     flexboxTableHeaderRowColor = #CCC
-unless flexboxTableZebraRowColor
+unless flexboxTableZebraRowColor is defined
     flexboxTableZebraRowColor = #DDD
 
 //Typography
+unless resetType is defined
+    resetType = true //If set to falsy, Blackjack will not make any type changes
 unless baseFontColor is defined
     baseFontColor = #363636
 unless baseFontSize is defined
