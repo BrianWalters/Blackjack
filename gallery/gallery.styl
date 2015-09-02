@@ -1,58 +1,122 @@
 @import '../source/blackjack'
 
-main
-    text-align center
+bodyText()
+    h1,h2,h3,h4,h5,h6,p
+        margin-bottom 1em
 
 gutter = 1vw
 breakpoint = 768px
 bigBreakpoint = 1024px
+
+.primary-container
+    margin 0 20px
+
+    +makeBreakpoint(1024px)
+        margin 0 auto
+        max-width 900px
+        width 75vw
+
+code
+    background-color #DDD
+    display inline-block
+    padding 0 .2em
+
+dl
+    border 1px solid #333
+    border-radius 4px
+    display flex
+    flex-wrap wrap
+    margin-bottom 1em
+    padding 1em
+
+    dt, dd
+        &:not(:last-of-type)
+            margin-bottom 1em
+
+    dt
+        flex-basis 25%
+        padding-right .5vw
+        text-align right
+
+    dd
+        flex-basis 75%
+        padding-left .5vw
+
+//Introduction 'Welcome to Blackjack'
+
+.introduction
+    bodyText()
+    clearfix()
+
+    .page-header
+        text-align center
+
+    &__row
+        gridContainer()
+
+    &__abstract
+    .bender-video
+    &__features
+    &__explanation
+        gridCell(.5, breakpoint, gutter)
+
+.feature-list
+    list-style inside
+
+//Grid section
+.grid-section
+    bodyText()
 
 .grid-container
     gridContainer()
     margin-bottom gutter
 
 galleryCell()
-    background-color #DDD
+    border 1px solid #333
     border-radius 4px
-    font-size 1.5em
     line-height 2.25em
-    text-align center
+    padding 1em
 
 .grid-cell-50-gutter
-    gridCell(.5, gutter, breakpoint)
+    gridCell(.5, breakpoint, gutter)
     galleryCell()
 
 .grid-cell-40
-    gridCell(ratio: .4, startGridAt: breakpoint)
+    gridCell(.4, breakpoint)
     galleryCell()
 
 .grid-cell-25
-    gridCell(ratio: .25, startGridAt: breakpoint)
+    gridCell(.25, breakpoint)
     galleryCell()
 
 .grid-cell-20
-    gridCell(ratio: .2, startGridAt: breakpoint)
+    gridCell(.2, breakpoint)
     galleryCell()
 
 .grid-cell-1-7-gutter
-    gridCell(1/7, gutter, breakpoint)
+    gridCell(1/7, breakpoint, gutter)
     galleryCell()
 
 .grid-cell-3-5-gutter
-    gridCell(3/5, gutter, breakpoint)
+    gridCell(3/5, breakpoint, gutter)
     galleryCell()
 
 .grid-cell-1-5-gutter
-    gridCell(1/5, gutter, breakpoint)
+    gridCell(1/5, breakpoint, gutter)
     galleryCell()
 
 .double-breakpoint-cell
-    gridCell(1/3, gutter, breakpoint, 3)
-    gridCell(1/6, gutter, bigBreakpoint, 6)
+    gridCell(1/2, breakpoint, gutter, 2)
+    gridCell(1/3, bigBreakpoint, gutter, 3)
+    galleryCell()
+
+.double-breakpoint-cell-two
+    gridCell(1/3, breakpoint, gutter, 3)
+    gridCell(1/5, bigBreakpoint, gutter)
     galleryCell()
 
 .third
-    gridCell(1/3, gutter, breakpoint, 3)
+    gridCell(1/3, breakpoint, gutter, 3)
 
 .bordered-demo-box
     background-color green

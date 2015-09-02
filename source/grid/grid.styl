@@ -18,8 +18,8 @@ An argument that accepts a breakpoint.
 The grid cells will be single column until it reaches that breakpoint,
 after the breakpoint the cells will form a row.
 
-cycle
-If the row is expected to wrap, the cycle value should be
+cellsPerRow
+If the row is expected to wrap, the cellsPerRow value should be
 the expected number of cells on each row.
 
 
@@ -32,20 +32,22 @@ gridContainer()
     display flex
     flex-wrap wrap
 
-gridCell(ratio = 1, gutter = defaultGridGutter, startGridAt = null, cycle = null)
+gridCell(ratio = 1, startGridAt = null, gutter = defaultGridGutter, cellsPerRow = null)
     width 100%
 
     +makeBreakpoint(startGridAt)
         float left
-        w = 100% * ratio
-        width w
+        width w = 100% * ratio
         width s('calc(100% * %s - %s + %s * %s)', ratio, gutter, ratio, gutter)
 
-        if cycle
-            &:not(:nth-child({cycle}n))
-                margin-right gutter
-            &:nth-child({cycle}n+1)
+        &:nth-child(n)
+            margin-right gutter
+
+        if cellsPerRow
+            &:nth-child({cellsPerRow}n)
+                margin-right 0px
+            &:nth-child({cellsPerRow}n+1)
                 clear left
         else
-            &:not(:last-child)
-                margin-right gutter
+            &:last-child
+                margin-right 0px
