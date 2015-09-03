@@ -32,6 +32,10 @@
                     <p>More importantly, behavior stays in your stylesheets instead of leaking into your markup.
                         Keep your HTML clean by naming your elements one time and mixing in behavior on that class.
                         This closely fits <a href="https://css-tricks.com/bem-101/">BEM</a> style of writing CSS.</p>
+                    <blockquote>
+                        <p>Absorb what is useful. Discard what is not. Add what is uniquely your own.</p>
+                        <cite>Bruce Lee</cite>
+                    </blockquote>
                 </div>
                 <div class="introduction__features">
                     <h2>Features</h2>
@@ -54,6 +58,7 @@
                 fallback. You can set a gutter. Also a breakpoint where the cells stack up in a single column.</p>
             <p>It's done with the <code>gridCell</code> mixin and the optional <code>gridContainer</code> mixin.</p>
             <dl>
+                <h3>Mixins</h3>
                 <dt><code>gridContainer</code></dt>
                 <dd>A mixin that requires no arguments. Put this around your cells if you need clearfix or flexbox
                     behavior. Not required but recommended.</dd>
@@ -74,6 +79,16 @@
                         href="http://learnboost.github.io/stylus/docs/functions.html#named-parameters">Named
                             Parameters</a>.</p>
                 </dd>
+            </dl>
+            <dl>
+                <h3>Options</h3>
+                <dt><code>defaultGridGutter</code></dt>
+                <dd>If no gutter is specified, grid cells will use this distance as the gutter. <strong>Default: 0px</strong></dd>
+                <dt><code>noFlex</code></dt>
+                <dd>If set to true, no flex properties will be added to the grid. <strong>Default: false</strong></dd>
+                <dt><code>noCalc</code></dt>
+                <dd>If set to true, the grid will not use the powerful calc() CSS function. If you enable this option,
+                    gutters will not work, as they are engineered using calc(). <strong>Default: false</strong></dd>
             </dl>
             <div class="grid-container">
                 <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
@@ -118,17 +133,45 @@
             </div>
         </section>
 
+        <section class="breakpoint-section">
+            <h2>Breakpoints</h2>
+            <p>Blackjack includes a helper mixin to create media query breakpoints.</p>
+            <dl>
+                <h3>Mixins</h3>
+                <dt><code>makeBreakpoint</code></dt>
+                <dd>
+                    <p>Accepts two arguments and a code block:</p>
+                    <ul>
+                        <li><code>min</code> A minimum width that the code block should appear.</li>
+                        <li><code>max</code> A maximum width that the code block should appear.</li>
+                    </ul>
+                    <p>Both arguments are optional, but this helper won't do much if both are omitted.</p>
+                </dd>
+            </dl>
+            <div class="breakpoint-demo">
+                <code>
+<pre>.breakpoint-demo
+    background-color Bisque
+
+    +makeBreakpoint(500px, 750px)
+        background-color LightBlue
+
+    +makeBreakpoint(750px, 1000px)
+        background-color GreenYellow
+
+    +makeBreakpoint(1000px)
+        background-color Pink</pre>
+
+                </code>
+            </div>
+        </section>
+
         <section>
 
             <h2>Animations</h2>
             <div class="bordered-demo-box spin">Spin</div>
             <div class="bordered-demo-box shake">Shake</div>
 
-        </section>
-
-        <section>
-            <h2>Breakpoint helper</h2>
-            <div class="breakpoint-demo"></div>
         </section>
 
         <section>
