@@ -25,12 +25,15 @@ the expected number of cells on each row.
 
 Configurable variables:
 defaultGridGutter
+noFlex
+noCalc
 \*------------------------------------*/
 
 gridContainer()
     clearfix()
-    display flex
-    flex-wrap wrap
+    if noFlex isnt true
+        display flex
+        flex-wrap wrap
 
 gridCell(ratio = 1, startGridAt = null, gutter = defaultGridGutter, cellsPerRow = null)
     width 100%
@@ -38,9 +41,11 @@ gridCell(ratio = 1, startGridAt = null, gutter = defaultGridGutter, cellsPerRow 
     +makeBreakpoint(startGridAt)
         float left
         width w = 100% * ratio
-        width s('calc(100% * %s - %s + %s * %s)', ratio, gutter, ratio, gutter)
+        if noCalc isnt true
+            width s('calc(100% * %s - %s + %s * %s)', ratio, gutter, ratio, gutter)
 
         &:nth-child(n)
+            clear none
             margin-right gutter
 
         if cellsPerRow
