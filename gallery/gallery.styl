@@ -42,6 +42,17 @@ dl
         flex-basis 75%
         padding-left .5vw
 
+blockquote
+    background #DDD
+    border-radius 4px
+    padding 1em
+
+    & > p
+        &:first-of-type:before
+            content '\201C'
+        &:last-of-type:after
+            content '\201D'
+
 //Introduction 'Welcome to Blackjack'
 
 .introduction
