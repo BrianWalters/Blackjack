@@ -1,0 +1,33 @@
+/*------------------------------------*\
+DENSITY
+
+Helper for creating a media query for a code block that will
+only be applied after the given pixel density.
+
+The mixin is densityBreakpoint. It accepts one argument, the pixel density.
+Automatically converts that pixel density into dpi.
+If nothing is passed, it defaults to 2 (standard retina).
+
+reference: https://css-tricks.com/snippets/css/retina-display-media-query/
+
+Example:
+
+.my-element
+    background-image url('/athena.png')
+
+    +density(2)
+        background-image url('/athena-2x.png')
+
+\*------------------------------------*/
+
+densityFactor = 96
+
+densityToDpi(density)
+    if density
+        round(densityFactor * density, 1)
+
+densityBreakpoint(density = 2)
+    @media (-webkit-min-device-pixel-ratio density)
+        {block}
+    @media (min-resolution densityToDpi(density))
+        {block}

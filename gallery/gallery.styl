@@ -57,10 +57,13 @@ blockquote
         &:last-of-type:after
             content '\201D'
 
+section
+main
+    bodyText()
+
 //Introduction 'Welcome to Blackjack'
 
 .introduction
-    bodyText()
     clearfix()
 
     .page-header
@@ -79,9 +82,6 @@ blockquote
     list-style inside
 
 //Grid section
-.grid-section
-    bodyText()
-
 .grid-container
     gridContainer()
     margin-bottom gutter
@@ -133,9 +133,7 @@ galleryCell()
 .third
     gridCell(1/3, breakpoint, gutter, 3)
 
-.breakpoint-section
-    bodyText()
-
+//Breakpoint Section
 .breakpoint-demo
     align-items center
     background-color Bisque
@@ -166,6 +164,42 @@ galleryCell()
         background-color Pink
         &:after
             content 'Above 1000px'
+
+//Density section
+.rainier-container
+    display flex
+    justify-content space-between
+
+.rainier-cell
+    &
+    &-retina
+        height 300px
+        width 400px
+
+.rainier-cell
+    background url('/rainier.png') no-repeat
+    background-size 400px 300px
+
+.rainier-cell-retina
+    background url('/rainier.png') no-repeat
+    background-size 400px 300px
+
+    +densityBreakpoint()
+        background-image url('/rainier-2x.png')
+
+.density-code-container
+    clearfix()
+
+    .density-code-cell
+        width 400px
+
+        &:first-child
+            float left
+
+        &:last-child
+            float right
+
+//Animation section
 
 .bordered-demo-box
     background-color green

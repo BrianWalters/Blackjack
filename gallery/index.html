@@ -166,6 +166,40 @@
             </div>
         </section>
 
+        <section class="density-section">
+            <h2>Density</h2>
+            <p>Blackjack includes a helper for inserting a media query for pixel density.</p>
+            <dl>
+                <h3>Mixins</h3>
+                <dt><code>densityBreakpoint</code></dt>
+                <dd>
+                    <p>Accepts one argument and a code block.</p>
+                    <ul>
+                        <li><code>density</code> The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></li>
+                    </ul>
+                </dd>
+            </dl>
+            <div class="rainier-container">
+                <div class="rainier-cell"></div>
+                <div class="rainier-cell-retina"></div>
+            </div>
+            <div class="density-code-container">
+                <div class="density-code-cell">
+                    <code>background url('/rainier.png') no-repeat<br>
+                        background-size 400px 300px</code>
+                </div>
+                <div class="density-code-cell">
+                    <code>
+<pre>background url('/rainier.png') no-repeat
+background-size 400px 300px
+
++densityBreakpoint()
+    background-image url('/rainier-2x.png')</pre>
+                    </code>
+                </div>
+            </div>
+        </section>
+
         <section>
 
             <h2>Animations</h2>

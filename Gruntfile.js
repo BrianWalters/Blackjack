@@ -32,7 +32,7 @@ module.exports = function ( grunt ) {
             docroot: {
                 files: [{
                     cwd: 'gallery/',
-                    src: ['index.html'],
+                    src: ['index.html', '*.png'],
                     dest: 'docroot/',
                     expand: true
                 }]
