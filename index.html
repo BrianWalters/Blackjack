@@ -166,16 +166,58 @@
             </div>
         </section>
 
-        <section>
+        <section class="density-section">
+            <h2>Density</h2>
+            <p>Blackjack includes a helper for inserting a media query for pixel density.</p>
+            <dl>
+                <h3>Mixins</h3>
+                <dt><code>densityBreakpoint</code></dt>
+                <dd>
+                    <p>Accepts one argument and a code block.</p>
+                    <ul>
+                        <li><code>density</code> The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></li>
+                    </ul>
+                </dd>
+            </dl>
+            <div class="rainier-container">
+                <div class="rainier-cell"></div>
+                <div class="rainier-cell-retina"></div>
+            </div>
+            <div class="density-code-container">
+                <div class="density-code-cell">
+                    <code>background url('/rainier.png') no-repeat<br>
+                        background-size 400px 300px</code>
+                </div>
+                <div class="density-code-cell">
+                    <code>
+<pre>background url('/rainier.png') no-repeat
+background-size 400px 300px
+
++densityBreakpoint()
+    background-image url('/rainier-2x.png')</pre>
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <section class="animation-section">
 
             <h2>Animations</h2>
+            <p>Blackjack contains a few animations for use during development. They won't often end up in a production web project,
+            but are useful as placeholders for some other behavior.</p>
             <div class="bordered-demo-box spin">Spin</div>
             <div class="bordered-demo-box shake">Shake</div>
 
         </section>
 
-        <section>
+        <section class="table-section">
             <h2>Tables</h2>
+
+            <p>Tables are a nightmare for a modern web developer.
+                Blackjack restyles the table elements into a flex containers and items,
+                something that gives you better control and power than standard table display.</p>
+            <p>Cells and rows will grow and shrink based on flex properties.
+                You can now give table cells priority using <code>flex-grow</code> and <code>flex-shrink</code>.</p>
 
             <h3>Standard table</h3>
             <table>
@@ -211,8 +253,9 @@
             </table>
         </section>
 
-        <section>
+        <section class="zebra-list-section">
             <h2>Zebra list</h2>
+            <p>The zebra list places a background color on every other row, granting easier readability.</p>
             <ul class="zebra-list">
                 <li>Foo</li>
                 <li>Bar</li>
@@ -222,6 +265,11 @@
 
         <section>
             <h2>Forms</h2>
+
+            <p>Forms can be a pain to style correctly.
+                The user-agent stylesheets for forms are far from the quality most users expect.
+                Blackjack starts by bringing form fields up to snuff, and then gives you the ability to extend
+                it further.</p>
 
             <div class="grid-container">
                 <div class="third">

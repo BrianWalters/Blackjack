@@ -1010,13 +1010,20 @@ blockquote > p:first-of-type:before {
 blockquote > p:last-of-type:after {
   content: '\201D';
 }
-.introduction h1,
-.introduction h2,
-.introduction h3,
-.introduction h4,
-.introduction h5,
-.introduction h6,
-.introduction p {
+section h1,
+main h1,
+section h2,
+main h2,
+section h3,
+main h3,
+section h4,
+main h4,
+section h5,
+main h5,
+section h6,
+main h6,
+section p,
+main p {
   margin-bottom: 1em;
 }
 .introduction:after {
@@ -1071,15 +1078,6 @@ blockquote > p:last-of-type:after {
 }
 .feature-list {
   list-style: inside;
-}
-.grid-section h1,
-.grid-section h2,
-.grid-section h3,
-.grid-section h4,
-.grid-section h5,
-.grid-section h6,
-.grid-section p {
-  margin-bottom: 1em;
 }
 .grid-container {
   display: -webkit-flex;
@@ -1343,15 +1341,6 @@ blockquote > p:last-of-type:after {
     clear: left;
   }
 }
-.breakpoint-section h1,
-.breakpoint-section h2,
-.breakpoint-section h3,
-.breakpoint-section h4,
-.breakpoint-section h5,
-.breakpoint-section h6,
-.breakpoint-section p {
-  margin-bottom: 1em;
-}
 .breakpoint-demo {
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -1399,6 +1388,51 @@ blockquote > p:last-of-type:after {
   .breakpoint-demo:after {
     content: 'Above 1000px';
   }
+}
+.rainier-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.rainier-cell,
+.rainier-cell-retina {
+  height: 300px;
+  width: 400px;
+}
+.rainier-cell {
+  background: url("/rainier.png") no-repeat;
+  background-size: 400px 300px;
+}
+.rainier-cell-retina {
+  background: url("/rainier.png") no-repeat;
+  background-size: 400px 300px;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .rainier-cell-retina {
+    background-image: url("/rainier-2x.png");
+  }
+}
+@media (min-resolution: 192) {
+  .rainier-cell-retina {
+    background-image: url("/rainier-2x.png");
+  }
+}
+.density-code-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.density-code-container .density-code-cell {
+  width: 400px;
+}
+.density-code-container .density-code-cell:first-child {
+  float: left;
+}
+.density-code-container .density-code-cell:last-child {
+  float: right;
 }
 .bordered-demo-box {
   background-color: #008000;
