@@ -200,16 +200,24 @@ background-size 400px 300px
             </div>
         </section>
 
-        <section>
+        <section class="animation-section">
 
             <h2>Animations</h2>
+            <p>Blackjack contains a few animations for use during development. They won't often end up in a production web project,
+            but are useful as placeholders for some other behavior.</p>
             <div class="bordered-demo-box spin">Spin</div>
             <div class="bordered-demo-box shake">Shake</div>
 
         </section>
 
-        <section>
+        <section class="table-section">
             <h2>Tables</h2>
+
+            <p>Tables are a nightmare for a modern web developer.
+                Blackjack restyles the table elements into a flex containers and items,
+                something that gives you better control and power than standard table display.</p>
+            <p>Cells and rows will grow and shrink based on flex properties.
+                You can now give table cells priority using <code>flex-grow</code> and <code>flex-shrink</code>.</p>
 
             <h3>Standard table</h3>
             <table>
@@ -245,8 +253,9 @@ background-size 400px 300px
             </table>
         </section>
 
-        <section>
+        <section class="zebra-list-section">
             <h2>Zebra list</h2>
+            <p>The zebra list places a background color on every other row, granting easier readability.</p>
             <ul class="zebra-list">
                 <li>Foo</li>
                 <li>Bar</li>
@@ -256,6 +265,11 @@ background-size 400px 300px
 
         <section>
             <h2>Forms</h2>
+
+            <p>Forms can be a pain to style correctly.
+                The user-agent stylesheets for forms are far from the quality most users expect.
+                Blackjack starts by bringing form fields up to snuff, and then gives you the ability to extend
+                it further.</p>
 
             <div class="grid-container">
                 <div class="third">
