@@ -3,12 +3,13 @@ BUTTONS
 
 Creates look and feel for buttons
 
-Provides mixin and class:
-button() or .button
+Provides mixin:
+button()
 
-Add .square to remove radius.
+and can automatically be applied to configured selectors
+with variable buttonSelectors
 
-states that can be added with classes:
+Additional states that can be added with classes:
 .info
 .success
 .error
@@ -43,9 +44,6 @@ button()
     width auto
     word-wrap break-word
 
-    &.square
-        border-radius 0px
-
     &:hover
     &:focus
     &.active
@@ -60,12 +58,24 @@ button()
         cursor not-allowed
         outline none
 
-    &.busy:after
-        content "\f110"
-        display inline-block
-        font-family FontAwesome
-        margin-left .25em
-        spin()
+    &.busy
+        cursor wait
+
+        &:after
+            stroke = 3px
+
+            border-top stroke solid baseFontColor
+            border-right @border-top
+            border-bottom stroke solid transparent
+            border-left @border-bottom
+            border-radius 50%
+            content " "
+            display inline-block
+            height 1em
+            margin-left .25em
+            spin()
+            width @height
+            vertical-align middle
 
     for state in extraButtonStates
         &.{state[0]}
