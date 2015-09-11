@@ -236,8 +236,8 @@ img {
   list-style: none;
 }
 .spin {
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
 }
 .shake {
   -webkit-animation: shake 100ms infinite;
@@ -742,13 +742,6 @@ a.button:visited,
   width: auto;
   word-wrap: break-word;
 }
-button.square,
-.button.square,
-a.button.square,
-a.button:visited.square,
-[role="button"].square {
-  border-radius: 0px;
-}
 button:hover,
 .button:hover,
 a.button:hover,
@@ -791,17 +784,31 @@ a.button:visited.disabled,
   cursor: not-allowed;
   outline: none;
 }
+button.busy,
+.button.busy,
+a.button.busy,
+a.button:visited.busy,
+[role="button"].busy {
+  cursor: wait;
+}
 button.busy:after,
 .button.busy:after,
 a.button.busy:after,
 a.button:visited.busy:after,
 [role="button"].busy:after {
-  content: "\f110";
+  border-top: 3px solid #363636;
+  border-right: 3px solid #363636;
+  border-bottom: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-radius: 50%;
+  content: " ";
   display: inline-block;
-  font-family: FontAwesome;
+  height: 1em;
   margin-left: 0.25em;
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+  width: 1em;
+  vertical-align: middle;
 }
 button.info,
 .button.info,
