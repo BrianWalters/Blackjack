@@ -201,7 +201,11 @@ galleryCell()
 
 //Animation section
 
+.animation-section .grid-container
+    margin 100px 0px
+
 .bordered-demo-box
+    gridCell(ratio: 1/5, startGridAt: breakpoint)
     background-color green
     border-color red
     border-style solid
@@ -210,4 +214,3 @@ galleryCell()
     height 120px
     line-height @height - @border-width * 2
     text-align center
-    width @height
