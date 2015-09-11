@@ -243,6 +243,14 @@ img {
   -webkit-animation: shake 100ms infinite;
           animation: shake 100ms infinite;
 }
+.pulse {
+  -webkit-animation: pulse 1s infinite;
+          animation: pulse 1s infinite;
+}
+.hop {
+  -webkit-animation: hop 1s infinite;
+          animation: hop 1s infinite;
+}
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -665,6 +673,30 @@ img {
   98% {
     -webkit-transform: translate(-0.5px, 1.5px) rotate(-0.5deg);
             transform: translate(-0.5px, 1.5px) rotate(-0.5deg);
+  }
+}
+@-webkit-keyframes pulse {
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes pulse {
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@-webkit-keyframes hop {
+  50% {
+    -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
+  }
+}
+@keyframes hop {
+  50% {
+    -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
   }
 }
 body,
@@ -1441,7 +1473,11 @@ main p {
 .density-code-container .density-code-cell:last-child {
   float: right;
 }
+.animation-section .grid-container {
+  margin: 100px 0px;
+}
 .bordered-demo-box {
+  width: 100%;
   background-color: #008000;
   border-color: #f00;
   border-style: solid;
@@ -1450,5 +1486,18 @@ main p {
   height: 120px;
   line-height: 100px;
   text-align: center;
-  width: 120px;
+}
+@media (min-width: 768px) {
+  .bordered-demo-box {
+    float: left;
+    width: 20%;
+    width: calc(100% * 0.2 - 0px + 0.2 * 0px);
+  }
+  .bordered-demo-box:nth-child(n) {
+    clear: none;
+    margin-right: 0px;
+  }
+  .bordered-demo-box:last-child {
+    margin-right: 0px;
+  }
 }
