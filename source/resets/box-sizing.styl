@@ -3,10 +3,20 @@ Box-sizing reset
 
 Sets the default to border-box so layout makes a thousand times more sense.
 https://css-tricks.com/box-sizing/
+
+Configurable:
+resets (default true)
+
+Placeholders:
+borderBox
 \*------------------------------------*/
 
-*
+$borderBox
     box-sizing border-box
 
     &:before, &:after
         box-sizing inherit
+
+if resets
+    *
+        @extend $borderBox

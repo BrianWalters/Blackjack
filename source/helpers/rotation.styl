@@ -12,17 +12,21 @@ Use the rotate() mixin to define a custom angle.
 
 .my-class
     rotateBy(45)
+
+configurable:
+rotateClasses (default true)
 \*------------------------------------*/
 
 rotateClassPrefix = 'rotate-'
 
 rotateValues = 90 180 270
 
-for rotateValue in rotateValues
-    .{rotateClassPrefix}{rotateValue}
-        transform 'rotate(%sdeg)' % rotateValue
-    .{rotateClassPrefix}{rotateValue}-ctr
-        transform 'rotate(%sdeg)' % (rotateValue * -1)
+if rotateClasses
+    for rotateValue in rotateValues
+        .{rotateClassPrefix}{rotateValue}
+            transform 'rotate(%sdeg)' % rotateValue
+        .{rotateClassPrefix}{rotateValue}-ctr
+            transform 'rotate(%sdeg)' % (rotateValue * -1)
 
 rotateBy(angle)
     transform 'rotate(%sdeg)' % angle

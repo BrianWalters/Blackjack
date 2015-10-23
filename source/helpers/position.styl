@@ -8,6 +8,9 @@ If you use many helpers on one element,
 you'll be better off creating a class for the element,
 and putting all the rules on that class.
 
+configurable:
+positionClasses (default true)
+
 Start by setting a positioning class on the element:
 .absolute
 .fixed
@@ -29,19 +32,20 @@ Stack classes together to position against a corner:
 .bottom.left
 
 \*------------------------------------*/
-.static
-    position static
+if positionClasses
+    .static
+        position static
 
-.relative
-    position relative
+    .relative
+        position relative
 
-positions = absolute fixed
-sides = top bottom left right
+    positions = absolute fixed
+    sides = top bottom left right
 
-for position in positions
-    .{position}
-        position position
+    for position in positions
+        .{position}
+            position position
 
-        for side in sides
-            &.{side}
-                {side} 0px
+            for side in sides
+                &.{side}
+                    {side} 0px

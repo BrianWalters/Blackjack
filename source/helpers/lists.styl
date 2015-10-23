@@ -3,11 +3,15 @@ LISTS
 
 Provides mixin and style to remove or reset the lists style
 
+configurable:
+listClasses (default true)
+
 .unstyled or unstyled()- removes bullets or numbers
 \*------------------------------------*/
 
-unstyled()
+$unstyled
     list-style none
 
-.unstyled
-    unstyled()
+if listClasses
+    .unstyled
+        @extend $unstyled
