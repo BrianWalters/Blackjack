@@ -4,7 +4,7 @@ ANIMATIONS
 Provides mixins and classes for commonly used animations
 
 List of available animations:
-.spin or spin()
+.rotation or rotation()
 .shake or shake()
 .pulse or pulse()
 .hop or hop()
@@ -14,21 +14,21 @@ List of available animations:
  * SPIN
  *
  * One revolution every second
- * .spin
- * spin()
+ * .rotation
+ * rotation()
  */
-if animationSpin
-    @keyframes spin
+if animationRotation
+    @keyframes rotation
         0%
             transform rotate(0deg)
         100%
             transform rotate(359deg)
 
-    spin()
-        animation spin 1s infinite linear
+    rotation()
+        animation rotation 1s infinite linear
 
-    .spin
-        spin()
+    .rotation
+        rotation()
 
 /**
  * SHAKE

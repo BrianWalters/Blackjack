@@ -73,9 +73,10 @@ button()
             display inline-block
             height 1em
             margin-left .25em
-            spin()
             width @height
             vertical-align middle
+            if animationRotation
+                rotation()
 
     for state in extraButtonStates
         &.{state[0]}
