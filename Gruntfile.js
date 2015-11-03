@@ -74,6 +74,10 @@ module.exports = function ( grunt ) {
                 options: {
                     compress: false
                 }
+            },
+            blank: {
+                src: 'blank/blanked-config.styl',
+                dest: 'blank/blank-config.css'
             }
         },
 
