@@ -1,6 +1,6 @@
 {
-  "name": "stylus-demo",
-  "version": "0.0.1",
+  "name": "Blackjack",
+  "version": "1.0.5",
   "devDependencies": {
     "autoprefixer-stylus": "^0.7.1",
     "connect-modrewrite": "^0.7.9",
