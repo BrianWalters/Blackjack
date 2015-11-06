@@ -72,16 +72,20 @@ module.exports = function ( grunt ) {
 
         html: {
             gallery: {
-                cwd: 'gallery/',
-                src: ['index.html'],
-                dest: 'docroot/',
-                expand: true
+                files: [{
+                    cwd: 'gallery/',
+                    src: ['index.html'],
+                    dest: 'docroot/',
+                    expand: true
+                }]
             },
             test: {
-                cwd: 'test/',
-                src: ['**/*.html'],
-                dest: 'docroot/test/',
-                expand: true
+                files: [{
+                    cwd: 'test/',
+                    src: ['**/*.html'],
+                    dest: 'docroot/test/',
+                    expand: true
+                }]
             }
         },
 
@@ -133,11 +137,20 @@ module.exports = function ( grunt ) {
     };
 
     grunt.registerMultiTask('html', 'Render HTML with nunjucks', function() {
-        console.log(this.data);
+        console.log(this.files);
         var tests = fs.readdirSync('test/');
         var context = {
             tests: tests
         };
+
+        this.files.forEach( function(fileObject) {
+            var totalRenderedHtml = '';
+            fileObject.src.forEach(function(filesToRender) {
+                var renderedHtml = nunjucks.render(filesToRender, context);
+                totalRenderedHtml += renderedHtml;
+            });
+            fs.writeFileSync(fileObject.dest, totalRenderedHtml);
+        });
     });
 
     grunt.initConfig( task_config );
