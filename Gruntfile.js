@@ -1,6 +1,9 @@
 module.exports = function ( grunt ) {
 
     require('load-grunt-tasks')(grunt);
+    var fs = require('fs');
+    var nunjucks = require('nunjucks');
+    nunjucks.configure({ autoescape: true });
 
     var task_config = {
 
@@ -29,11 +32,19 @@ module.exports = function ( grunt ) {
         },
 
         copy: {
-            docroot: {
+            gallery: {
                 files: [{
                     cwd: 'gallery/',
-                    src: ['index.html', '*.png'],
+                    src: ['*.png'],
                     dest: 'docroot/',
+                    expand: true
+                }]
+            },
+            test: {
+                files: [{
+                    cwd: 'test/',
+                    src: '**/*.html',
+                    dest: 'docroot/test/',
                     expand: true
                 }]
             },
@@ -59,6 +70,21 @@ module.exports = function ( grunt ) {
             }
         },
 
+        html: {
+            gallery: {
+                cwd: 'gallery/',
+                src: ['index.html'],
+                dest: 'docroot/',
+                expand: true
+            },
+            test: {
+                cwd: 'test/',
+                src: ['**/*.html'],
+                dest: 'docroot/test/',
+                expand: true
+            }
+        },
+
         stylus: {
             options: {
                 "include css": true,
@@ -78,6 +104,14 @@ module.exports = function ( grunt ) {
             blank: {
                 src: 'blank/blanked-config.styl',
                 dest: 'blank/blank-config.css'
+            },
+            test: {
+                cwd: 'test/',
+                src: ['**/*.styl'],
+                dest: 'docroot/test/',
+                filter: 'isFile',
+                ext: '.css',
+                expand: true
             }
         },
 
@@ -98,12 +132,21 @@ module.exports = function ( grunt ) {
         }
     };
 
+    grunt.registerMultiTask('html', 'Render HTML with nunjucks', function() {
+        console.log(this.data);
+        var tests = fs.readdirSync('test/');
+        var context = {
+            tests: tests
+        };
+    });
+
     grunt.initConfig( task_config );
 
     grunt.registerTask( 'build', [
         'clean',
         'stylus',
-        'copy'
+        'copy',
+        'html'
     ]);
 
     grunt.registerTask( 'serve', [

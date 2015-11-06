@@ -9,6 +9,16 @@
 
         <main class="introduction">
             <h1 class="page-header">Welcome to Blackjack</h1>
+
+            <div>
+                See the tests:
+                <ul>
+                    {% for test in tests %}
+                        <li><a href="{{ test }}">{{ test }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
             <div class="introduction__row">
                 <div class="introduction__abstract">
                     <p>Blackjack is a collection of mixins, functions and helpers written in Stylus to make your front-end development easier and faster.</p>
