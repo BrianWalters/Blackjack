@@ -1,6 +1,9 @@
 module.exports = function ( grunt ) {
 
     require('load-grunt-tasks')(grunt);
+    var fs = require('fs');
+    var nunjucks = require('nunjucks');
+    nunjucks.configure({ autoescape: true });
 
     var task_config = {
 
@@ -18,22 +21,25 @@ module.exports = function ( grunt ) {
             serve: {
                 options: {
                     open: 'http://localhost:8008',
-                    port: 8008,
-                    middleware: function (connect, options) {
-                        var optBase = (typeof options.base === 'string') ? [options.base] : options.base;
-                        return [require('connect-modrewrite')(['!(\\..+)$ / [L]'])].concat(
-                            optBase.map(function(path){ return connect.static(path); }));
-                    }
+                    port: 8008
                 }
             }
         },
 
         copy: {
-            docroot: {
+            gallery: {
                 files: [{
                     cwd: 'gallery/',
-                    src: ['index.html', '*.png'],
+                    src: ['*.png'],
                     dest: 'docroot/',
+                    expand: true
+                }]
+            },
+            test: {
+                files: [{
+                    cwd: 'test/',
+                    src: '**/*.html',
+                    dest: 'docroot/test/',
                     expand: true
                 }]
             },
@@ -59,9 +65,29 @@ module.exports = function ( grunt ) {
             }
         },
 
+        html: {
+            gallery: {
+                files: [{
+                    cwd: 'gallery/',
+                    src: ['index.html'],
+                    dest: 'docroot/',
+                    expand: true
+                }]
+            },
+            test: {
+                files: [{
+                    cwd: 'test/',
+                    src: ['**/*.html'],
+                    dest: 'docroot/test/',
+                    expand: true
+                }]
+            }
+        },
+
         stylus: {
             options: {
                 "include css": true,
+                compress: false,
                 use: [
                     function() {
                         return require('autoprefixer-stylus')('last 2 versions', 'ie 8', 'ie 9', 'ie 10');
@@ -70,14 +96,19 @@ module.exports = function ( grunt ) {
             },
             gallery: {
                 src: 'gallery/gallery.styl',
-                dest: 'docroot/gallery.css',
-                options: {
-                    compress: false
-                }
+                dest: 'docroot/gallery.css'
             },
             blank: {
                 src: 'blank/blanked-config.styl',
                 dest: 'blank/blank-config.css'
+            },
+            test: {
+                cwd: 'test/',
+                src: ['**/*.styl'],
+                dest: 'docroot/test/',
+                filter: 'isFile',
+                ext: '.css',
+                expand: true
             }
         },
 
@@ -98,12 +129,42 @@ module.exports = function ( grunt ) {
         }
     };
 
+    grunt.registerMultiTask('html', 'Render HTML with nunjucks using sibling JSON as context', function() {
+        var tests = grunt.file.expand('test/**/*.html');
+        var globalContext = {
+            tests: tests
+        };
+
+        this.files.forEach( function(fileObject) {
+            var totalRenderedHtml = '';
+
+            fileObject.src.forEach(function(fileToRender) {
+                var pathToContext = fileToRender.replace('html', 'json');
+                var doesHtmlHaveContext = grunt.file.exists(pathToContext);
+                var renderedHtml;
+                var fileContext = {};
+
+                if (doesHtmlHaveContext)
+                    fileContext = Object.assign({}, globalContext, grunt.file.readJSON(pathToContext));
+                else
+                    fileContext = globalContext;
+
+                renderedHtml = nunjucks.render(fileToRender, fileContext);
+
+                totalRenderedHtml += renderedHtml;
+            });
+
+            grunt.file.write(fileObject.dest, totalRenderedHtml);
+        });
+    });
+
     grunt.initConfig( task_config );
 
     grunt.registerTask( 'build', [
         'clean',
         'stylus',
-        'copy'
+        'copy',
+        'html'
     ]);
 
     grunt.registerTask( 'serve', [

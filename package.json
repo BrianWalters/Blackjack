@@ -11,6 +11,8 @@
     "grunt-contrib-stylus": "^0.21.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "^0.10.0",
-    "load-grunt-tasks": "^1.0.0"
+    "grunt-nunjucks": "^0.1.4",
+    "load-grunt-tasks": "^1.0.0",
+    "nunjucks": "^2.1.0"
   }
 }
