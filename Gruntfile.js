@@ -130,7 +130,7 @@ module.exports = function ( grunt ) {
     };
 
     grunt.registerMultiTask('html', 'Render HTML with nunjucks using sibling JSON as context', function() {
-        var tests = grunt.file.expand({ cwd: 'test/' }, '*');
+        var tests = grunt.file.expand('test/**/*.html');
         var globalContext = {
             tests: tests
         };
