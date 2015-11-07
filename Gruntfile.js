@@ -35,14 +35,6 @@ module.exports = function ( grunt ) {
                     expand: true
                 }]
             },
-            test: {
-                files: [{
-                    cwd: 'test/',
-                    src: '**/*.html',
-                    dest: 'docroot/test/',
-                    expand: true
-                }]
-            },
             sampleConfig: {
                 options: {
                     process: function (content, srcpath) {
@@ -98,10 +90,6 @@ module.exports = function ( grunt ) {
                 src: 'gallery/gallery.styl',
                 dest: 'docroot/gallery.css'
             },
-            blank: {
-                src: 'blank/blanked-config.styl',
-                dest: 'blank/blank-config.css'
-            },
             test: {
                 cwd: 'test/',
                 src: ['**/*.styl'],
@@ -120,6 +108,11 @@ module.exports = function ( grunt ) {
             filesChangedApp: {
                 files: ['gallery/index.html'],
                 tasks: ['copy']
+            },
+
+            testFiles: {
+                files: ['test/**/*.html', 'test/**/*.json'],
+                tasks: ['html']
             },
 
             stylus: {
