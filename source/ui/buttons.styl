@@ -3,8 +3,8 @@ BUTTONS
 
 Creates look and feel for buttons
 
-Provides mixin:
-button()
+Provides placeholder class:
+$button
 
 and can automatically be applied to configured selectors
 with variable buttonSelectors
@@ -33,7 +33,7 @@ $button
     border-radius 4px
     cursor pointer
     display inline-block
-    fontStack()
+    @extend $fontStack
     font-weight 700
     height auto
     line-height 1.5
