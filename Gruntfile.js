@@ -1,7 +1,6 @@
 module.exports = function ( grunt ) {
 
     require('load-grunt-tasks')(grunt);
-    var fs = require('fs');
     var nunjucks = require('nunjucks');
     nunjucks.configure({ autoescape: true });
 
