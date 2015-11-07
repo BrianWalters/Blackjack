@@ -2,27 +2,15 @@
  * RESETS
  */
 unless resets is defined
-    resets = true
+    resets = false
 
 /**
  * HELPERS
  */
 
-//Float
-unless floatClasses is defined
-    floatClasses = true
-
-//Lists
-unless listClasses is defined
-    listClasses = true
-
 //Position
 unless positionClasses is defined
-    positionClasses = true
-
-//Rotation
-unless rotateClasses is defined
-    rotateClasses = true
+    positionClasses = false
 
 //Spacing
 unless baseSpacingDistance is defined
@@ -45,13 +33,13 @@ unless noCalc is defined
 
 //Animations
 unless animationRotation is defined
-    animationSpin = true
+    animationRotation = false
 unless animationShake is defined
-    animationShake = true
+    animationShake = false
 unless animationPulse is defined
-    animationPulse = true
+    animationPulse = false
 unless animationHop is defined
-    animationHop = true
+    animationHop = false
 
 //Buttons
 unless baseButtonColor is defined
@@ -60,36 +48,26 @@ unless buttonBorderColor is defined
     buttonBorderColor = #DDD
 unless extraButtonStates is defined
     extraButtonStates = (info #309dd4) (success #67b646) (error #b84c4c)
-unless buttonSelectors is defined
-    buttonSelectors = 'button, .button, a.button, a.button:visited, [role="button"]'
 
 //Forms
 unless fieldBorderStyle is defined
     fieldBorderStyle = 1px solid #CCC
 unless errorColor is defined
     errorColor = #b84c4c
-unless fieldSelectors is defined
-    fieldSelectors = 'input:not([type="checkbox"]):not([type="radio"]), textarea, select'
 
 //Hyperlinks
 unless linkColor is defined
     linkColor = #245a91
 unless linkHover is defined
     linkHover = #198d98
-unless linkSelectors is defined
-    linkSelectors = 'a,a:visited'
 
 //Tables
-unless flexboxTableSelectors is defined
-    flexboxTableSelectors = 'table'
 unless flexboxTableHeaderRowColor is defined
     flexboxTableHeaderRowColor = #CCC
 unless flexboxTableZebraRowColor is defined
     flexboxTableZebraRowColor = #DDD
 
 //Typography
-unless resetType is defined
-    resetType = true //If set to falsy, Blackjack will not make any type changes
 unless baseFontColor is defined
     baseFontColor = #363636
 unless baseFontSize is defined
@@ -97,10 +75,4 @@ unless baseFontSize is defined
 unless baseLineHeight is defined
     baseLineHeight = 1.5
 unless fontFamily is defined
-    fontFamily = Helvetica, Arial, Geneva, sans-serif
-
-//Zebra List
-unless zebraColor is defined
-    zebraColor = #ddd
-unless zebraSelectors is defined
-    zebraSelectors = '.zebra-list'
+    fontFamily = "Open Sans", "Helvetica", "Arial", "Geneva", sans-serif

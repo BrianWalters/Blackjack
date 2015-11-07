@@ -1,4 +1,12 @@
+resets = true
+animationRotation = true
+animationShake = true
+animationHop = true
+animationPulse = true
 @import '../source/blackjack'
+
+body
+    @extend $fontStack
 
 bodyText()
     h1,h2,h3,h4,h5,h6,p
@@ -204,6 +212,36 @@ galleryCell()
 
 .animation-section .grid-container
     margin 100px 0px
+    
+.shake
+    shake()
+
+.rotation
+    rotation()
+    
+.pulse
+    pulse()
+    
+.hop
+    hop()
+    
+//Table section
+table
+    @extend $flexboxTable
+    
+//Lists section
+.zebra-list
+    zebraList( rgba(green, .25) )
+    
+//Forms section
+input[type="text"]
+select
+textarea
+    field()
+    
+.button
+button
+    @extend $button
 
 .bordered-demo-box
     gridCell(ratio: 1/5, startGridAt: breakpoint)

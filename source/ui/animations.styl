@@ -4,17 +4,16 @@ ANIMATIONS
 Provides mixins and classes for commonly used animations
 
 List of available animations:
-.rotation or rotation()
-.shake or shake()
-.pulse or pulse()
-.hop or hop()
+rotation()
+shake()
+pulse()
+hop()
 \*------------------------------------*/
 
 /**
  * SPIN
  *
  * One revolution every second
- * .rotation
  * rotation()
  */
 if animationRotation
@@ -27,14 +26,10 @@ if animationRotation
     rotation()
         animation rotation 1s infinite linear
 
-    .rotation
-        rotation()
-
 /**
  * SHAKE
  *
  * Element will shake violently
- * .shake
  * shake()
  */
 if animationShake
@@ -93,9 +88,6 @@ if animationShake
     shake()
         animation shake 100ms infinite
 
-    .shake
-        shake()
-
 if animationPulse
     @keyframes pulse
         50%
@@ -104,9 +96,6 @@ if animationPulse
     pulse()
         animation pulse 1s infinite
 
-    .pulse
-        pulse()
-
 if animationHop
     @keyframes hop
         50%
@@ -114,6 +103,3 @@ if animationHop
 
     hop()
         animation hop 1s infinite
-
-    .hop
-        hop()

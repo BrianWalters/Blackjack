@@ -3,8 +3,8 @@ BUTTONS
 
 Creates look and feel for buttons
 
-Provides mixin:
-button()
+Provides placeholder class:
+$button
 
 and can automatically be applied to configured selectors
 with variable buttonSelectors
@@ -26,14 +26,14 @@ extraButtonStates
 buttonSelectors
 \*------------------------------------*/
 
-button()
+$button
     appearance none
     background-color baseButtonColor
     border 1px solid buttonBorderColor
     border-radius 4px
     cursor pointer
     display inline-block
-    fontStack()
+    @extend $fontStack
     font-weight 700
     height auto
     line-height 1.5
@@ -87,7 +87,3 @@ button()
             &:focus
             &.active
                 background-color darken(state[1], 20%)
-
-if buttonSelectors
-    {buttonSelectors}
-        button()
