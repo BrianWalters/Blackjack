@@ -1,52 +1,25 @@
 /*------------------------------------*\
 POSITION
 
-Helpers for adjusting positioning of elements
+Placeholder classes for adjusting positioning of elements
 Read more about how the "position" property works: https://css-tricks.com/almanac/properties/p/position/
 
-If you use many helpers on one element,
-you'll be better off creating a class for the element,
-and putting all the rules on that class.
-
-configurable:
-positionClasses (default true)
-
-Start by setting a positioning class on the element:
-.absolute
-.fixed
-
-Or reset to normal behavior with:
-.static
-
-Or set relative with:
-.relative
-
-Then optionally define the position with these quick helper classes:
-.top
-.bottom
-.left
-.right
-
-Stack classes together to position against a corner:
-.top.right
-.bottom.left
+$topright
+$topleft
+$bottomright
+$bottomleft
 
 \*------------------------------------*/
 
-if positionClasses
-    .static
-        position static
+horizontalSides = top bottom
+verticalSides = left right
 
-    .relative
-        position relative
+$absolute
+    position absolute
 
-    positions = absolute fixed
-    sides = top bottom left right
-
-    for position in positions
-        .{position}
-            position position
-
-            for side in sides
-                &.{side}
-                    {side} 0px
+for horizontalSide in horizontalSides
+    for verticalSide in verticalSides
+        ${horizontalSide}{verticalSide}
+            @extend $absolute
+            {horizontalSide} 0px
+            {verticalSide} 0px
