@@ -1,0 +1,19 @@
+@import '../../source/blackjack'
+
+.container
+    align-content space-around
+    display flex
+    flex-wrap wrap
+    height 60vh
+    justify-content space-between
+    padding 20vh 20vw
+
+    .item
+        background hotpink
+        height 10vh
+        width 10vw
+
+        animations = rotation shake pulse hop
+        for anim in animations
+            &.{anim}
+                @extend ${anim}

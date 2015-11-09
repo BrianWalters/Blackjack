@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="animation.css">
+<div class="container">
+    {% set animationClasses = cycler('rotation', 'shake', 'pulse', 'hop') %}
+    {% for thing in range(0, 10) %}
+    <div class="item {{ animationClasses.next() }}"></div>
+    {% endfor %}
+</div>
