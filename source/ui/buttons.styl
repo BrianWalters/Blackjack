@@ -25,11 +25,13 @@ baseButtonBorderColor
 extraButtonStates
 \*------------------------------------*/
 
-button()
-    fontStack( color: baseButtonFontColor, fontWeight: 400 )
+button( buttonColor = null )
+    buttonColor = buttonColor ? buttonColor : baseButtonColor
+
+    fontStack( color: buttonColor, fontWeight: 400 )
     appearance none
     background-color transparent
-    border 2px solid baseButtonBorderColor
+    border 2px solid buttonColor
     border-radius 4px
     cursor pointer
     display inline-block
@@ -50,8 +52,11 @@ button()
     &[disabled="disabled"]
     &[aria-disabled="true"]
     &.disabled
+        disabledColor = rgba(buttonColor, .5)
+
         background-color transparent
-        color rgba(baseButtonFontColor, .5)
+        border-color disabledColor
+        color disabledColor
         cursor not-allowed
         outline none
 
@@ -61,7 +66,7 @@ button()
         &:after
             stroke = 3px
 
-            border-top stroke solid baseButtonFontColor
+            border-top stroke solid buttonColor
             border-right @border-top
             border-bottom stroke solid transparent
             border-left @border-bottom
@@ -74,12 +79,12 @@ button()
             vertical-align middle
             @extend $rotation
 
-    for state in extraButtonStates
-        &.{state[0]}
-            background-color state[1]
-            color #FFF
+    &.primary
+        background-color buttonColor
+        border-color buttonColor
+        color #FFF
 
-            &:hover
-            &:focus
-            &.active
-                background-color darken(state[1], 20%)
+        &:hover
+        &:focus
+        &.active
+            background-color darken(buttonColor, 20%)
