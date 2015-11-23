@@ -1,0 +1,23 @@
+/*------------------------------------*\
+ZEBRA LIST
+
+Attach class or mixin to a list to give striped rows.
+
+Mixins
+zebraList(color)
+\*------------------------------------*/
+
+zebraList(color)
+    & > li:nth-child(2n)
+        background-color color
+
+numberedList(color)
+    counter-reset li
+    list-style none inside
+
+    li:before
+        color color
+        content counter(li)'.'
+        counter-increment li
+        font-weight 700
+        margin-right .5em
