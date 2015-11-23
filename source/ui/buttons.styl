@@ -20,23 +20,20 @@ You can disable a button with the attribute aria-disabled:
 <div class="button" aria-disabled="true">Label</div>
 
 Configurable variables:
-baseButtonColor
-buttonBorderColor
+baseButtonFontColor
+baseButtonBorderColor
 extraButtonStates
-buttonSelectors
 \*------------------------------------*/
 
-$button
+button()
+    fontStack( color: baseButtonFontColor, fontWeight: 400 )
     appearance none
-    background-color baseButtonColor
-    border 1px solid buttonBorderColor
+    background-color transparent
+    border 2px solid baseButtonBorderColor
     border-radius 4px
     cursor pointer
     display inline-block
-    fontStack()
-    font-weight 700
     height auto
-    line-height 1.5
     padding .25em 1em
     text-align center
     text-decoration none
@@ -47,14 +44,14 @@ $button
     &:hover
     &:focus
     &.active
-        background-color darken(baseButtonColor, 20%)
+        background-color rgba(#000, .2)
 
     &[disabled]
     &[disabled="disabled"]
     &[aria-disabled="true"]
     &.disabled
-        background-color lighten(baseButtonColor, 20%)
-        color lighten(baseFontColor, 30%)
+        background-color transparent
+        color rgba(baseButtonFontColor, .5)
         cursor not-allowed
         outline none
 
@@ -64,7 +61,7 @@ $button
         &:after
             stroke = 3px
 
-            border-top stroke solid baseFontColor
+            border-top stroke solid baseButtonFontColor
             border-right @border-top
             border-bottom stroke solid transparent
             border-left @border-bottom
@@ -75,8 +72,7 @@ $button
             margin-left .25em
             width @height
             vertical-align middle
-            if animationRotation
-                rotation()
+            @extend $rotation
 
     for state in extraButtonStates
         &.{state[0]}
