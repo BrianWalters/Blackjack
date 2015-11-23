@@ -7,14 +7,19 @@ Configurable variables:
 baseFontColor
 baseFontSize
 baseLineHeight
-fontFamily
+baseFontFamily
 
-Placeholder classes:
-$fontStack
+Mixins:
+fontStack
 \*------------------------------------*/
 
-$fontStack
-    color baseFontColor
-    font-family fontFamily
+fontStack(fontColor = null, fontFamily = null, fontSize = null, lineHeight = null)
+    if fontColor
+        color fontColor
+    else
+        color baseFontColor
+
+
+    font-family baseFontFamily
     font-size baseFontSize
     line-height baseLineHeight
