@@ -13,26 +13,18 @@ Mixins:
 fontStack
 \*------------------------------------*/
 
+$fontStack
+    color baseFontColor
+    font-family baseFontFamily
+    font-size baseFontSize
+    line-height baseLineHeight
+
 fontStack(color = null, fontFamily = null, fontSize = null, lineHeight = null, fontWeight = null)
-    if color
-        color color
+    if color or fontFamily or fontSize or lineHeight or fontWeight
+        color color ? color : baseFontColor
+        font-family fontFamily ? fontFamily : baseFontFamily
+        font-size fontSize ? fontSize : baseFontSize
+        line-height lineHeight ? lineHeight : baseLineHeight
+        font-weight fontWeight if fontWeight
     else
-        color baseFontColor
-
-    if fontFamily
-        font-family fontFamily
-    else
-        font-family baseFontFamily
-
-    if fontSize
-        font-size fontSize
-    else
-        font-size baseFontSize
-
-    if lineHeight
-        line-height lineHeight
-    else
-        line-height baseLineHeight
-
-    if fontWeight
-        font-weight fontWeight
+        @extend $fontStack
