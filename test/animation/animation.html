@@ -1,7 +1,26 @@
 <link rel="stylesheet" href="animation.css">
 <div class="container">
     {% set animationClasses = cycler('rotation', 'shake', 'pulse', 'hop') %}
-    {% for thing in range(0, 10) %}
-    <div class="item {{ animationClasses.next() }}"></div>
-    {% endfor %}
+
+    <div class="row">
+        {% for index in range(0, 4) %}
+        <div class="item faster {{ animationClasses.next() }}">
+            <span>Fast</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for index in range(0, 4) %}
+        <div class="item {{ animationClasses.next() }}"></div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for index in range(0, 4) %}
+        <div class="item slower {{ animationClasses.next() }}">
+            <span>Slow</span>
+        </div>
+        {% endfor %}
+    </div>
 </div>

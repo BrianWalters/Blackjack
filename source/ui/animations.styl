@@ -19,8 +19,8 @@ $hop
 
 
 
-$rotation
-    animation rotation 1s infinite linear
+pulse(time = 1s)
+    animation rotation time infinite linear
 
     @keyframes rotation
         0%
@@ -34,7 +34,7 @@ $rotation
  * Element will shake violently
  * shake()
  */
-$shake
+shake(time = 100ms)
     @keyframes shake
         0% { transform: translate(0px, 0px) rotate(0deg); }
         2% { transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
@@ -87,18 +87,18 @@ $shake
         96% { transform: translate(-2.5px, -2.5px) rotate(0.5deg); }
         98% { transform: translate(-0.5px, 1.5px) rotate(-0.5deg); }
 
-    animation shake 100ms infinite
+    animation shake time infinite
 
-$pulse
+pulse(time = 1s)
     @keyframes pulse
         50%
             transform scale(1.1)
 
-    animation pulse 1s infinite
+    animation pulse time infinite
 
-$hop
+hop(time = 1s)
     @keyframes hop
         50%
             transform translateY(-12px)
 
-    animation hop 1s infinite
+    animation hop time infinite

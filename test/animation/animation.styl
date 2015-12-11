@@ -3,17 +3,36 @@
 .container
     align-content space-around
     display flex
-    flex-wrap wrap
+    flex-flow nowrap column
     height 60vh
     justify-content space-between
     padding 20vh 20vw
 
+    .row
+        display flex
+        justify-content space-between
+
     .item
+        align-items center
         background hotpink
+        color darkgreen
+        display flex
+        font-size 24px
         height 10vh
+        justify-content center
         width 10vw
 
         animations = rotation shake pulse hop
-        for anim in animations
+        fasterSpeed = .5s 10ms .5s .5s
+        slowerSpeed = 2s 1s 2s 2s
+        for anim, index in animations
             &.{anim}
-                @extend ${anim}
+                anim()
+
+                &.faster
+                    background red
+                    anim(fasterSpeed[index])
+
+                &.slower
+                    background lightpink
+                    anim(slowerSpeed[index])
