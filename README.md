@@ -14,31 +14,31 @@ The `source` directory contains the good stuff. Use Stylus's `@import` to pull i
 
 ## What API is exposed
 
-$gridContainer / gridContainer()
-gridCell()
-makeBreakpoint()
-$clearfix / clearfix()
-densityBreakpoint()
-$topright
-$topleft
-$bottomright
-$bottomleft
-$rotate90
-$rotate180
-$rotate270
-$rotate90Ctr
-$rotate180Ctr
-$rotate270Ctr
-$spacingClasses
-$borderBox / borderBox()
-$zero / zero()
-rotation()
-shake()
-pulse()
-hop()
-button()
-$field / field()
-hyperlink()
-zebraList()
-flexboxTable()
-$fontStack / fontStack()
+* $gridContainer / gridContainer()
+* gridCell()
+* makeBreakpoint()
+* $clearfix / clearfix()
+* densityBreakpoint()
+* $topright
+* $topleft
+* $bottomright
+* $bottomleft
+* $rotate90
+* $rotate180
+* $rotate270
+* $rotate90Ctr
+* $rotate180Ctr
+* $rotate270Ctr
+* $spacingClasses
+* $borderBox / borderBox()
+* $zero / zero()
+* rotation()
+* shake()
+* pulse()
+* hop()
+* button()
+* $field / field()
+* hyperlink()
+* zebraList()
+* flexboxTable()
+* $fontStack / fontStack()
