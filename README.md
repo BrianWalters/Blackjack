@@ -12,21 +12,33 @@ A minimum level of work is always required when building CSS for a web site or a
 
 The `source` directory contains the good stuff. Use Stylus's `@import` to pull in `blackjack.styl` to your project. Open it and comment out the parts you don't want, then you're good to go!
 
-## What kind of tools are we talking about here?
+## What API is exposed
 
-### Resets
-
-Zeros out all margins, padding and borders. Sets box-sizing to border-box. Sets images to a sensible vertical alignment.
-
-### Helpers
-
-- Function to build media-query breakpoints with just a couple arguments.
-- Helper classes for one-shot styles, such as margin, padding, float, position, rotation, etc.
-
-### Grid
-
-Blackjack includes a mixin to build grid rows. They are made with flexbox but contain a float layout as a fallback. It supports gutters, multiple rows, and breakpoints to set when cells will collapse to single column. You aren't constrained to any number of columns – simply set a percentage or fraction.
-
-### UI
-
-Basic UI improvements are available for forms, tables, and buttons. A couple of animations are included as well. These are meant to be a starting point and the rest of Blackjack doesn't rely on them. Each are in their own Stylus sheet. If you don't like it, comment the `@import` from `Blackjack.styl` and move on! Blackjack is built to be modular in this way.
+$gridContainer / gridContainer()
+gridCell()
+makeBreakpoint()
+$clearfix / clearfix()
+densityBreakpoint()
+$topright
+$topleft
+$bottomright
+$bottomleft
+$rotate90
+$rotate180
+$rotate270
+$rotate90Ctr
+$rotate180Ctr
+$rotate270Ctr
+$spacingClasses
+$borderBox / borderBox()
+$zero / zero()
+rotation()
+shake()
+pulse()
+hop()
+button()
+$field / field()
+hyperlink()
+zebraList()
+flexboxTable()
+$fontStack / fontStack()

@@ -12,7 +12,8 @@ Placeholder classes:
 $flexboxTable
 \*------------------------------------*/
 
-$flexboxTable
+flexboxTable(headerColor = flexboxTableHeaderRowColor, zebraRowColor = flexboxTableZebraRowColor)
+    display block
     width 100%
 
     thead, tbody
@@ -22,7 +23,7 @@ $flexboxTable
         justify-content space-between
 
     thead tr
-        background flexboxTableHeaderRowColor
+        background headerColor
 
     tr
         display flex
@@ -31,8 +32,9 @@ $flexboxTable
         width 100%
 
         &:nth-child(2n)
-            background flexboxTableZebraRowColor
+            background zebraRowColor
 
     td, th
+        display block
         flex 1 0 0px
         padding .5em

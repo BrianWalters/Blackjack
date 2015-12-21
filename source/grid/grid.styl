@@ -29,11 +29,14 @@ noFlex
 noCalc
 \*------------------------------------*/
 
-gridContainer()
+$gridContainer
     clearfix()
     if noFlex isnt true
         display flex
         flex-wrap wrap
+
+gridContainer()
+    @extend $gridContainer
 
 gridCell(ratio = 1, startGridAt = null, gutter = defaultGridGutter, cellsPerRow = null)
     width 100%
