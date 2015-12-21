@@ -4,8 +4,11 @@ CLEARFIX
 The classic clearfix mixin, for elements with floating children
 \*------------------------------------*/
 
-clearfix()
+$clearfix
     &:after
         clear both
         content ""
         display table
+
+clearfix()
+    @extend $clearfix

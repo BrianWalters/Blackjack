@@ -3,8 +3,11 @@ IMAGE
 
 Images are set to "baseline" by default, which causes unexpected space to be added below them sometimes.
 When set on "bottom" you get the behavior you would expect.
+
+max-width 100% keeps large images from stretching outside of their parent
 \*------------------------------------*/
 
 if resets
     img
+        max-width 100%
         vertical-align bottom

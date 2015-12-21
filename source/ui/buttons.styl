@@ -25,9 +25,7 @@ baseButtonBorderColor
 extraButtonStates
 \*------------------------------------*/
 
-button( buttonColor = null )
-    buttonColor = buttonColor ? buttonColor : baseButtonColor
-
+button( buttonColor = baseButtonColor )
     fontStack( color: buttonColor, fontWeight: 400 )
     appearance none
     background-color transparent

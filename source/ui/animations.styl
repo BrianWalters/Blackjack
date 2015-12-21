@@ -1,20 +1,20 @@
 /*------------------------------------*\
 ANIMATIONS
 
-Provides mixins and classes for commonly used animations
+Provides mixins for commonly used animations
 
 List of available animations:
-$rotation
-$shake
-$pulse
-$hop
+rotation
+shake
+pulse
+hop
 \*------------------------------------*/
 
 /**
- * Rotation
+ * ROTATION
  *
- * One revolution every second
- * rotation()
+ * One revolution every second by default.
+ * Time parameter sets how long one revolution takes.
  */
 
 
@@ -32,7 +32,6 @@ rotation(time = 1s)
  * SHAKE
  *
  * Element will shake violently
- * shake()
  */
 shake(time = 100ms)
     @keyframes shake
@@ -89,12 +88,26 @@ shake(time = 100ms)
 
     animation shake time infinite
 
+
+/**
+ * PULSE
+ *
+ * Element grows larger and returns back to normal shape once per second.
+ * Time parameter sets the length of each pulse.
+ */
 pulse(time = 1s)
     @keyframes pulse
         50%
             transform scale(1.1)
 
     animation pulse time infinite
+
+/**
+ * HOP
+ *
+ * Element leaps up and down. Each jump is one second.
+ * Time parameter sets the length of each jump.
+ */
 
 hop(time = 1s)
     @keyframes hop
