@@ -6,13 +6,12 @@ Sets a baseline for hyperlinks/anchors
 Configurable variables:
 linkColor
 linkHover
-linkSelectors
 \*------------------------------------*/
 
-hyperlink()
-    color linkColor
+hyperlink(baseLinkColor = linkColor, hoverLinkColor = linkHover)
+    color baseLinkColor
     text-decoration none
 
     &:hover
     &:focus
-        color linkHover
+        color hoverLinkColor

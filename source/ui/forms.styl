@@ -1,17 +1,14 @@
 /*------------------------------------*\
 FORMS
 
-Sets a minimum visual for text form fields,
-such as input type="text", textarea, and select
+Sets a minimum visual for text form fields.
 
 Configurable variables:
 fieldBorderStyle
 errorColor
-fieldSelectors
-
 \*------------------------------------*/
 
-field()
+$field
     background-color #FFF
     border fieldBorderStyle
     border-radius 4px
@@ -28,6 +25,5 @@ field()
     &.error
         background-color rgba(errorColor, 50%)
 
-/**
- * TODO: Add Radios and Checkboxes
- */
+field()
+    @extend $field
