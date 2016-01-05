@@ -29,7 +29,7 @@ module.exports = function ( grunt ) {
             gallery: {
                 files: [{
                     cwd: 'gallery/',
-                    src: ['*.png'],
+                    src: ['*.{png,svg}'],
                     dest: 'docroot/',
                     expand: true
                 }]
@@ -104,13 +104,8 @@ module.exports = function ( grunt ) {
                 livereload: true
             },
 
-            filesChangedApp: {
-                files: ['gallery/index.html'],
-                tasks: ['copy']
-            },
-
             testFiles: {
-                files: ['test/**/*.html', 'test/**/*.json'],
+                files: ['gallery/index.html', 'test/**/*.html', 'test/**/*.json'],
                 tasks: ['html']
             },
 
