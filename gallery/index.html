@@ -12,9 +12,9 @@
                 <img class="logo" src="logo.svg" alt="Welcome to Blackjack">
             </h1>
 
-            <div>
-                See the tests:
-                <ul>
+            <div class="introduction__tests">
+                <h2>Tests</h2>
+                <ul class="introduction__test-list">
                     {% for test in tests %}
                         <li><a href="{{ test }}">{{ test }}</a></li>
                     {% endfor %}
@@ -23,14 +23,12 @@
 
             <div class="introduction__row">
                 <div class="introduction__abstract">
+                    <h2>Abstract</h2>
                     <p>Blackjack is a collection of mixins, functions and helpers written in Stylus to make your front-end development easier and faster.</p>
                     <p>Blackjack is not a flattened CSS file that you include with your source. It's meant for advanced
                         developers who understand the power of a CSS preprocessor.</p>
                     <p>Blackjack is written in Stylus and meant to be included directly into your Stylus source. By default,
                         Blackjack will not add anything to your CSS. It only adds rules when you invoke mixins, functions, or placeholder classes.</p>
-                </div>
-                <div class="bender-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BGi6Q1pNbS0" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -86,40 +84,44 @@
             <p>Blackjack can quickly make rows of content. They are built with a flexbox layout but include floats as a
                 fallback. You can set a gutter. Also a breakpoint where the cells stack up in a single column.</p>
             <p>It's done with the <code>gridCell</code> mixin and the optional <code>gridContainer</code> mixin.</p>
-            <dl>
+            <div class="doc-wrapper">
                 <h3>API</h3>
-                <dt><code>$gridContainer or gridContainer()</code></dt>
-                <dd>A mixin that requires no arguments. Put this around your cells if you need clearfix or flexbox
-                    behavior. Not required but recommended.</dd>
-                <dt><code>gridCell(ratio, startGridAt, gutter, cellsPerRow)</code></dt>
-                <dd>
-                    <p>Creates a grid cell.</p>
-                    <p>For anything meaningful, <strong>ratio</strong> and <strong>startGridAt</strong> should be set.
-                    <dl>
-                        <dt>ratio</dt>
-                        <dd>Fraction or decimal representing how much of the grid row the
-                            cell should take. <strong>Default 1.</strong></dd>
-                        <dt>startGridAt</dt>
-                        <dd>Grid cells stack on each other until the viewport reaches
-                            this passed breakpoint, then the grid row appears. Mobile-first mindset.</dd>
-                        <dt>gutter</dt>
-                        <dd>Space between grid cells. <strong>Default: defaultGridGutter.</strong></dd>
-                        <dt>cellsPerRow</dt>
-                        <dd>cellsPerRow If the grid cells are expected to wrap, enter the
-                            number of cells on each row.</dd>
-                    </dl>
-                </dd>
-            </dl>
-            <dl>
+                <dl>
+                    <dt><code>$gridContainer or gridContainer()</code></dt>
+                    <dd>A mixin that requires no arguments. Put this around your cells if you need clearfix or flexbox
+                        behavior. Not required but recommended.</dd>
+                    <dt><code>gridCell(ratio, startGridAt, gutter, cellsPerRow)</code></dt>
+                    <dd>
+                        <p>Creates a grid cell.</p>
+                        <p>For anything meaningful, <strong>ratio</strong> and <strong>startGridAt</strong> should be set.
+                        <dl>
+                            <dt>ratio</dt>
+                            <dd>Fraction or decimal representing how much of the grid row the
+                                cell should take. <strong>Default 1.</strong></dd>
+                            <dt>startGridAt</dt>
+                            <dd>Grid cells stack on each other until the viewport reaches
+                                this passed breakpoint, then the grid row appears. Mobile-first mindset.</dd>
+                            <dt>gutter</dt>
+                            <dd>Space between grid cells. <strong>Default: defaultGridGutter.</strong></dd>
+                            <dt>cellsPerRow</dt>
+                            <dd>cellsPerRow If the grid cells are expected to wrap, enter the
+                                number of cells on each row.</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+            <div class="doc-wrapper">
                 <h3>Options</h3>
-                <dt><code>defaultGridGutter</code></dt>
-                <dd>If no gutter is specified, grid cells will use this distance as the gutter. <strong>Default: 0px</strong></dd>
-                <dt><code>noFlex</code></dt>
-                <dd>If set to true, no flex properties will be added to the grid. <strong>Default: false</strong></dd>
-                <dt><code>noCalc</code></dt>
-                <dd>If set to true, the grid will not use the powerful calc() CSS function. If you enable this option,
-                    gutters will not work, as they are engineered using calc(). <strong>Default: false</strong></dd>
-            </dl>
+                <dl>
+                    <dt><code>defaultGridGutter</code></dt>
+                    <dd>If no gutter is specified, grid cells will use this distance as the gutter. <strong>Default: 0px</strong></dd>
+                    <dt><code>noFlex</code></dt>
+                    <dd>If set to true, no flex properties will be added to the grid. <strong>Default: false</strong></dd>
+                    <dt><code>noCalc</code></dt>
+                    <dd>If set to true, the grid will not use the powerful calc() CSS function. If you enable this option,
+                        gutters will not work, as they are engineered using calc(). <strong>Default: false</strong></dd>
+                </dl>
+            </div>
 
             <h3>Examples</h3>
             <div class="grid-container">
@@ -168,20 +170,22 @@
         <section class="breakpoint-section">
             <h2>Breakpoints</h2>
             <p>Blackjack includes a helper mixin to create media query breakpoints.</p>
-            <dl>
+            <div class="doc-wrapper">
                 <h3>API</h3>
-                <dt><code>+makeBreakpoint(min, max)</code></dt>
-                <dd>
-                    <p>Include a block of styles that only apply in a certain width range.</p>
-                    <p>Both arguments are optional, but this helper won't do much if both are omitted.</p>
-                    <dl>
-                        <dt>min</dt>
-                        <dd>A minimum width that the code block should appear.</dd>
-                        <dt>max</dt>
-                        <dd>A maximum width that the code block should appear.</dd>
-                    </dl>
-                </dd>
-            </dl>
+                <dl>
+                    <dt><code>+makeBreakpoint(min, max)</code></dt>
+                    <dd>
+                        <p>Include a block of styles that only apply in a certain width range.</p>
+                        <p>Both arguments are optional, but this helper won't do much if both are omitted.</p>
+                        <dl>
+                            <dt>min</dt>
+                            <dd>A minimum width that the code block should appear.</dd>
+                            <dt>max</dt>
+                            <dd>A maximum width that the code block should appear.</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
             <h3>Examples</h3>
             <div class="breakpoint-demo">
                 <code>
@@ -204,17 +208,19 @@
         <section class="density-section">
             <h2>Density</h2>
             <p>Blackjack includes a helper for inserting a media query for pixel density.</p>
-            <dl>
+            <div class="doc-wrapper">
                 <h3>API</h3>
-                <dt><code>+densityBreakpoint(density)</code></dt>
-                <dd>
-                    <p>Show a block of styles that only apply above the given certain pixel density.</p>
-                    <dl>
-                        <dt>density</dt>
-                        <dd>The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></dd>
-                    </dl>
-                </dd>
-            </dl>
+                <dl>
+                    <dt><code>+densityBreakpoint(density)</code></dt>
+                    <dd>
+                        <p>Show a block of styles that only apply above the given certain pixel density.</p>
+                        <dl>
+                            <dt>density</dt>
+                            <dd>The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
             <h3>Examples</h3>
             <div class="rainier-container">
                 <div class="rainier-cell"></div>
@@ -242,41 +248,43 @@ background-size 400px 300px
             <h2>Animations</h2>
             <p>Blackjack contains a few animations for use during development. They won't often end up in a production web project,
             but are useful as placeholders for some other behavior.</p>
-            <dl>
+            <div class="doc-wrapper">
                 <h3>API</h3>
-                <dt>shake(time)</dt>
-                <dd>
-                    <p>Shakes the element.</p>
-                    <dl>
-                        <dt>time</dt>
-                        <dd>How long the animation lasts per loop. <strong>Default 100ms.</strong></dd>
-                    </dl>
-                </dd>
-                <dt>rotation(time)</dt>
-                <dd>
-                    <p>Spins the element clockwise.</p>
-                    <dl>
-                        <dt>time</dt>
-                        <dd>How long each revolution takes to complete. <strong>Default 1000ms</strong></dd>
-                    </dl>
-                </dd>
-                <dt>pulse(time)</dt>
-                <dd>
-                    <p>Makes the element grow and shrink like a beating heart.</p>
-                    <dl>
-                        <dt>time</dt>
-                        <dd>How long each pulse will take. <strong>Default 1000ms.</strong></dd>
-                    </dl>
-                </dd>
-                <dt>hop(time)</dt>
-                <dd>
-                    <p>Makes the element hop up and down.</p>
-                    <dl>
-                        <dt>time</dt>
-                        <dd>How long each hop takes. <strong>Default 1000ms.</strong></dd>
-                    </dl>
-                </dd>
-            </dl>
+                <dl>
+                    <dt>shake(time)</dt>
+                    <dd>
+                        <p>Shakes the element.</p>
+                        <dl>
+                            <dt>time</dt>
+                            <dd>How long the animation lasts per loop. <strong>Default 100ms.</strong></dd>
+                        </dl>
+                    </dd>
+                    <dt>rotation(time)</dt>
+                    <dd>
+                        <p>Spins the element clockwise.</p>
+                        <dl>
+                            <dt>time</dt>
+                            <dd>How long each revolution takes to complete. <strong>Default 1000ms</strong></dd>
+                        </dl>
+                    </dd>
+                    <dt>pulse(time)</dt>
+                    <dd>
+                        <p>Makes the element grow and shrink like a beating heart.</p>
+                        <dl>
+                            <dt>time</dt>
+                            <dd>How long each pulse will take. <strong>Default 1000ms.</strong></dd>
+                        </dl>
+                    </dd>
+                    <dt>hop(time)</dt>
+                    <dd>
+                        <p>Makes the element hop up and down.</p>
+                        <dl>
+                            <dt>time</dt>
+                            <dd>How long each hop takes. <strong>Default 1000ms.</strong></dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
             <h3>Examples</h3>
             <div class="grid-container">
                 <div class="bordered-demo-box rotation">Rotation</div>
@@ -294,6 +302,32 @@ background-size 400px 300px
                 something that can give you better control and power than standard table display.</p>
             <p>Cells and rows will grow and shrink based on flex properties.
                 You can now give table cells priority using <code>flex-grow</code> and <code>flex-shrink</code>.</p>
+
+            <div class="doc-wrapper">
+                <h3>API</h3>
+                <dl>
+                    <dt><code>flexboxTable(headerColor, zebraRowColor)</code></dt>
+                    <dd>
+                        <p>Makes the element into a flexbox table. Each column will use the exact same horizontal space.</p>
+                        <dl>
+                            <dt>headerColor</dt>
+                            <dd>Background color of the table header. Will be ignored if set to a falsy value. <strong>Default: flexboxTableHeaderRowColor</strong></dd>
+                            <dt>zebraRowColor</dt>
+                            <dd>Every other row in the table will have this background color, adding readability. Will be ignored if set to a falsy value. <strong>Default: flexboxTableZebraRowColor</strong></dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="doc-wrapper">
+                <h3>Options</h3>
+                <dl>
+                    <dt><code>flexboxTableHeaderRowColor</code></dt>
+                    <dd>The background color of table headers when none is given. <strong>Default: #CCC</strong></dd>
+                    <dt><code>flexboxTableZebraRowColor</code></dt>
+                    <dd>The background color of every other table row when none is given. <strong>Default: #DDD</strong></dd>
+                </dl>
+            </div>
 
             <h3>Examples</h3>
             <table>

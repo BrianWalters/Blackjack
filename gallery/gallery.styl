@@ -18,7 +18,7 @@ bigBreakpoint = 1024px
 
     +makeBreakpoint(1024px)
         margin 0 auto
-        max-width 900px
+        max-width 800px
         width 75vw
 
 a
@@ -34,21 +34,24 @@ code
     display inline-block
     padding 0 .2em
 
-dl
+.doc-wrapper
     border 1px solid #333
     border-radius 4px
     margin-bottom 1em
     padding 1em
 
     h1, h2, h3
-        flex-basis 100%
         text-align center
 
+dl
     dt
         font-weight 700
 
     dt, dd
         margin-bottom 1em
+
+    dl
+        padding-left 1em
 
 blockquote
     background blockBoxColor
@@ -77,14 +80,14 @@ main
         height auto
         max-width 300px
 
-    &__row
-        gridContainer()
-
     &__abstract
-    .bender-video
     &__features
     &__explanation
-        gridCell(.5, breakpoint, gutter)
+    &__tests
+        margin-bottom 1em
+
+    &__test-list
+        columns 2
 
 .feature-list
     list-style inside

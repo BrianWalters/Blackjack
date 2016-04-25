@@ -22,8 +22,9 @@ flexboxTable(headerColor = flexboxTableHeaderRowColor, zebraRowColor = flexboxTa
         flex-wrap nowrap
         justify-content space-between
 
-    thead tr
-        background headerColor
+    if headerColor
+        thead tr
+            background headerColor
 
     tr
         display flex
@@ -31,8 +32,9 @@ flexboxTable(headerColor = flexboxTableHeaderRowColor, zebraRowColor = flexboxTa
         flex-wrap nowrap
         width 100%
 
-        &:nth-child(2n)
-            background zebraRowColor
+        if zebraRowColor
+            &:nth-child(2n)
+                background zebraRowColor
 
     td, th
         display block

@@ -1,0 +1,22 @@
+resets = true
+@import '../../source/blackjack'
+
+.tables
+    margin 0 auto
+    padding 10vh
+    width 80%
+
+.table
+    margin-bottom 5vh
+
+.table.default
+    flexboxTable()
+
+.table.pink
+    flexboxTable(pink, lightpink)
+
+.table.header-nulled
+    flexboxTable(null, lightpink)
+
+.table.row-nulled
+    flexboxTable(pink, null)
