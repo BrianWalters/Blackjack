@@ -13,7 +13,7 @@ A minimum level of work is always required when building CSS for a web site or a
 The `source` directory contains the good stuff. Use Stylus's `@import` to pull in `blackjack.styl` to your project.
 Blackjack is built to never output any CSS unless one of its mixins or placeholder classes is invoked.
 
-## What API is exposed
+## What API is exposed?
 
 * $gridContainer / gridContainer()
 * gridCell()
@@ -37,6 +37,7 @@ Blackjack is built to never output any CSS unless one of its mixins or placehold
 * shake()
 * pulse()
 * hop()
+* $buttonReset
 * button()
 * $field / field()
 * hyperlink()
