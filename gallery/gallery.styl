@@ -21,16 +21,22 @@ bigBreakpoint = 1024px
         max-width 900px
         width 75vw
 
+a
+    hyperlink()
+
+blockBoxColor = #DDD
+
+ul, ol
+    list-style-position inside
+
 code
-    background-color #DDD
+    background-color blockBoxColor
     display inline-block
     padding 0 .2em
 
 dl
     border 1px solid #333
     border-radius 4px
-    display flex
-    flex-wrap wrap
     margin-bottom 1em
     padding 1em
 
@@ -38,21 +44,14 @@ dl
         flex-basis 100%
         text-align center
 
-    dt, dd
-        &:not(:last-of-type)
-            margin-bottom 1em
-
     dt
-        flex-basis 25%
-        padding-right .5vw
-        text-align right
+        font-weight 700
 
-    dd
-        flex-basis 75%
-        padding-left .5vw
+    dt, dd
+        margin-bottom 1em
 
 blockquote
-    background #DDD
+    background blockBoxColor
     border-radius 4px
     padding 1em
 

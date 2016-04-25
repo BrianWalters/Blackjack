@@ -27,9 +27,7 @@
                     <p>Blackjack is not a flattened CSS file that you include with your source. It's meant for advanced
                         developers who understand the power of a CSS preprocessor.</p>
                     <p>Blackjack is written in Stylus and meant to be included directly into your Stylus source. By default,
-                        Blackjack will add some sensible resets to certain HTML elements, but this is meant as a starting
-                        point rather than an end-all (this is <em>not</em> Bootstrap). You can configure Blackjack to a
-                        point where it doesn't spit out any opinionated CSS on its own other than basic resets.</p>
+                        Blackjack will not add anything to your CSS. It only adds rules when you invoke mixins, functions, or placeholder classes.</p>
                 </div>
                 <div class="bender-video">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/BGi6Q1pNbS0" frameborder="0" allowfullscreen></iframe>
@@ -89,26 +87,27 @@
                 fallback. You can set a gutter. Also a breakpoint where the cells stack up in a single column.</p>
             <p>It's done with the <code>gridCell</code> mixin and the optional <code>gridContainer</code> mixin.</p>
             <dl>
-                <h3>Mixins</h3>
-                <dt><code>gridContainer</code></dt>
+                <h3>API</h3>
+                <dt><code>$gridContainer or gridContainer()</code></dt>
                 <dd>A mixin that requires no arguments. Put this around your cells if you need clearfix or flexbox
                     behavior. Not required but recommended.</dd>
-                <dt><code>gridCell</code></dt>
+                <dt><code>gridCell(ratio, startGridAt, gutter, cellsPerRow)</code></dt>
                 <dd>
-                    <p>Takes four arguments:</p>
-                    <ul>
-                        <li><code>ratio</code> Fraction or decimal representing how much of the grid row the
-                            cell should take.</li>
-                        <li><code>startGridAt</code> Grid cells stack on each other until the viewport reaches
-                            this passed breakpoint, then the grid row appears. Mobile-first mindset.</li>
-                        <li><code>gutter</code> Space between grid cells.</li>
-                        <li><code>cellsPerRow</code> If the grid cells are expected to wrap, enter the
-                            number of cells on each row.</li>
-                    </ul>
-                    <p>For anything meaningful, <code>ratio</code> and <code>startGridAt</code> should be set.
-                    You can skip arguments because Stylus accepts <a
-                        href="http://learnboost.github.io/stylus/docs/functions.html#named-parameters">Named
-                            Parameters</a>.</p>
+                    <p>Creates a grid cell.</p>
+                    <p>For anything meaningful, <strong>ratio</strong> and <strong>startGridAt</strong> should be set.
+                    <dl>
+                        <dt>ratio</dt>
+                        <dd>Fraction or decimal representing how much of the grid row the
+                            cell should take. <strong>Default 1.</strong></dd>
+                        <dt>startGridAt</dt>
+                        <dd>Grid cells stack on each other until the viewport reaches
+                            this passed breakpoint, then the grid row appears. Mobile-first mindset.</dd>
+                        <dt>gutter</dt>
+                        <dd>Space between grid cells. <strong>Default: defaultGridGutter.</strong></dd>
+                        <dt>cellsPerRow</dt>
+                        <dd>cellsPerRow If the grid cells are expected to wrap, enter the
+                            number of cells on each row.</dd>
+                    </dl>
                 </dd>
             </dl>
             <dl>
@@ -121,6 +120,8 @@
                 <dd>If set to true, the grid will not use the powerful calc() CSS function. If you enable this option,
                     gutters will not work, as they are engineered using calc(). <strong>Default: false</strong></dd>
             </dl>
+
+            <h3>Examples</h3>
             <div class="grid-container">
                 <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
                 <div class="grid-cell-25"><code>gridCell(.25, 768px)</code></div>
@@ -168,17 +169,20 @@
             <h2>Breakpoints</h2>
             <p>Blackjack includes a helper mixin to create media query breakpoints.</p>
             <dl>
-                <h3>Mixins</h3>
-                <dt><code>makeBreakpoint</code></dt>
+                <h3>API</h3>
+                <dt><code>+makeBreakpoint(min, max)</code></dt>
                 <dd>
-                    <p>Accepts two arguments and a code block:</p>
-                    <ul>
-                        <li><code>min</code> A minimum width that the code block should appear.</li>
-                        <li><code>max</code> A maximum width that the code block should appear.</li>
-                    </ul>
+                    <p>Include a block of styles that only apply in a certain width range.</p>
                     <p>Both arguments are optional, but this helper won't do much if both are omitted.</p>
+                    <dl>
+                        <dt>min</dt>
+                        <dd>A minimum width that the code block should appear.</dd>
+                        <dt>max</dt>
+                        <dd>A maximum width that the code block should appear.</dd>
+                    </dl>
                 </dd>
             </dl>
+            <h3>Examples</h3>
             <div class="breakpoint-demo">
                 <code>
 <pre>.breakpoint-demo
@@ -201,15 +205,17 @@
             <h2>Density</h2>
             <p>Blackjack includes a helper for inserting a media query for pixel density.</p>
             <dl>
-                <h3>Mixins</h3>
-                <dt><code>densityBreakpoint</code></dt>
+                <h3>API</h3>
+                <dt><code>+densityBreakpoint(density)</code></dt>
                 <dd>
-                    <p>Accepts one argument and a code block.</p>
-                    <ul>
-                        <li><code>density</code> The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></li>
-                    </ul>
+                    <p>Show a block of styles that only apply above the given certain pixel density.</p>
+                    <dl>
+                        <dt>density</dt>
+                        <dd>The minimum pixel density required for the code block to apply. <strong>Default: 2</strong></dd>
+                    </dl>
                 </dd>
             </dl>
+            <h3>Examples</h3>
             <div class="rainier-container">
                 <div class="rainier-cell"></div>
                 <div class="rainier-cell-retina"></div>
@@ -236,6 +242,42 @@ background-size 400px 300px
             <h2>Animations</h2>
             <p>Blackjack contains a few animations for use during development. They won't often end up in a production web project,
             but are useful as placeholders for some other behavior.</p>
+            <dl>
+                <h3>API</h3>
+                <dt>shake(time)</dt>
+                <dd>
+                    <p>Shakes the element.</p>
+                    <dl>
+                        <dt>time</dt>
+                        <dd>How long the animation lasts per loop. <strong>Default 100ms.</strong></dd>
+                    </dl>
+                </dd>
+                <dt>rotation(time)</dt>
+                <dd>
+                    <p>Spins the element clockwise.</p>
+                    <dl>
+                        <dt>time</dt>
+                        <dd>How long each revolution takes to complete. <strong>Default 1000ms</strong></dd>
+                    </dl>
+                </dd>
+                <dt>pulse(time)</dt>
+                <dd>
+                    <p>Makes the element grow and shrink like a beating heart.</p>
+                    <dl>
+                        <dt>time</dt>
+                        <dd>How long each pulse will take. <strong>Default 1000ms.</strong></dd>
+                    </dl>
+                </dd>
+                <dt>hop(time)</dt>
+                <dd>
+                    <p>Makes the element hop up and down.</p>
+                    <dl>
+                        <dt>time</dt>
+                        <dd>How long each hop takes. <strong>Default 1000ms.</strong></dd>
+                    </dl>
+                </dd>
+            </dl>
+            <h3>Examples</h3>
             <div class="grid-container">
                 <div class="bordered-demo-box rotation">Rotation</div>
                 <div class="bordered-demo-box shake">Shake</div>
@@ -247,13 +289,13 @@ background-size 400px 300px
         <section class="table-section">
             <h2>Tables</h2>
 
-            <p>Tables are a nightmare for a modern web developer.
-                Blackjack restyles the table elements into a flex containers and items,
-                something that gives you better control and power than standard table display.</p>
+            <p>Tables can be a nightmare for a modern web developer.
+                Blackjack can restyle the table elements into a flex containers and items,
+                something that can give you better control and power than standard table display.</p>
             <p>Cells and rows will grow and shrink based on flex properties.
                 You can now give table cells priority using <code>flex-grow</code> and <code>flex-shrink</code>.</p>
 
-            <h3>Standard table</h3>
+            <h3>Examples</h3>
             <table>
                 <thead>
                 <tr>
