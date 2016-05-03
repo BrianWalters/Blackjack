@@ -364,13 +364,48 @@ background-size 400px 300px
         </section>
 
         <section class="zebra-list-section">
-            <h2>Zebra list</h2>
-            <p>The zebra list places a background color on every other row, granting easier readability.</p>
-            <ul class="zebra-list">
-                <li>Foo</li>
-                <li>Bar</li>
-                <li>Baz</li>
-            </ul>
+            <h2>Lists</h2>
+            <p>Blackjack provides a couple of helpers for making lists more readable.</p>
+            <div class="doc-wrapper">
+                <h3>API</h3>
+                <dl>
+                    <dt><code>zebraList(color)</code></dt>
+                    <dd>
+                        Converts to zebra list. Every other row will have a different background color, granding readability. Accepts one argument.
+                        <dl>
+                            <dt>color</dt>
+                            <dd>The background color to apply to zebra rows.</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>numberedList(color)</code></dt>
+                    <dd>
+                        Create a numbered list. Colors the numbers of the list items.
+                        <dl>
+                            <dt>color</dt>
+                            <dd>The color to use on the numbers.</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+            <h3>Examples</h3>
+            <p>
+                <code><pre>zebraList(rgba(green, .25))</pre></code>
+                <ul class="zebra-list">
+                    <li>Foo</li>
+                    <li>Bar</li>
+                    <li>Baz</li>
+                </ul>
+            </p>
+
+            <p>
+                <code><pre>numberedList(red)</pre></code>
+                <ol class="numbered-list">
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                </ol>
+            </p>
+
         </section>
 
         <section>
@@ -378,32 +413,75 @@ background-size 400px 300px
 
             <p>Forms can be a pain to style correctly.
                 The user-agent stylesheets for forms are far from the quality most users expect.
-                Blackjack starts by bringing form fields up to snuff, and then gives you the ability to extend
-                it further.</p>
+                Blackjack brings form fields up to snuff.</p>
 
-            <div class="grid-container">
-                <div class="third">
-                    <input type="text" placeholder="Enter text">
-                </div>
-                <div class="third">
-                    <select>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="third">
-                    <textarea>Foo bar baz</textarea>
-                </div>
-                <div class="third">
-                    <input class="error" type="text" value="Not valid!">
-                </div>
+            <div class="doc-wrapper">
+                <h3>API</h3>
+                <dl>
+                    <dt><code>$field or field()</code></dt>
+                    <dd>Changes the element into a blackjack form field. Improves the appearance by changing border, font color, and background for contrast. Changes type into a monospaced font for consistency and readability, like a typewriter of old.</dd>
+                </dl>
             </div>
 
-            <h3>Buttons</h3>
+            <div class="doc-wrapper">
+                <h3>Options</h3>
+                <dl>
+                    <dt><code>fieldBorderStyle</code></dt>
+                    <dd>Set the border of form fields. <strong>Default: 1px solid #CCC</strong>.</dd>
+                </dl>
+            </div>
+
+            <h3>Examples</h3>
+            <p>
+                <input type="text" placeholder="Enter text">
+            </p>
+            <p>
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </p>
+
+            <p>
+                <textarea>Foo bar baz</textarea>
+            </p>
+
+            <p>
+                <input class="error" type="text" value="Not valid!">
+            </p>
+        </section>
+
+        <section>
+            <h2>Buttons</h2>
             <p>Every website or application has some kind of button.
-                Blackjack sets up a base button then builds states from there.
-                Additional states are configurable.</p>
+                Blackjack sets up an easy to invoke base button. It also includes a some helpers when styling buttons.</p>
+
+            <div class="doc-wrapper">
+                <h3>API</h3>
+                <dl>
+                    <dt><code>button( buttonColor )</code></dt>
+                    <dd>
+                        <p>Styles the element to look like a Blackjack button.</p>
+                        <dl>
+                            <dt>buttonColor</dt>
+                            <dd>Used to style the button. The border and text will be based on this color.</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>$buttonReset</code></dt>
+                    <dd>Use on buttons to override user-agent stylesheets and make it a plain element.</dd>
+                </dl>
+            </div>
+
+            <div class="doc-wrapper">
+                <h3>Options</h3>
+                <dl>
+                    <dt><code>baseButtonColor</code></dt>
+                    <dd>Used by buttons if no buttonColor is given to them. <strong>Default: #004d00</strong>.</dd>
+                </dl>
+            </div>
+
+            <h3>Examples</h3>
             <button class="button" type="button">Button</button>
             <button class="button active" type="button">Active Button</button>
             <button class="button" disabled="disabled" type="button">Disabled Button</button>
