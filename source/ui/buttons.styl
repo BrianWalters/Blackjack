@@ -30,11 +30,8 @@ $buttonReset
     cursor pointer
     font-size 1rem
 
-button( buttonColor = baseButtonColor )
-    fontStack( color: buttonColor, fontWeight: 400 )
+buttonBase(buttonColor)
     appearance none
-    background-color #FFF
-    border 2px solid buttonColor
     border-radius 4px
     cursor pointer
     display inline-block
@@ -46,15 +43,48 @@ button( buttonColor = baseButtonColor )
     width auto
     word-wrap break-word
 
+busyState(color)
+    cursor wait
+
+    &:after
+        stroke = 3px
+
+        border-top stroke solid color
+        border-right @border-top
+        border-bottom stroke solid transparent
+        border-left @border-bottom
+        border-radius 50%
+        content " "
+        display inline-block
+        height 1em
+        margin-left .25em
+        width @height
+        vertical-align middle
+        rotation()
+
+simpleButton( buttonColor = baseButtonColor, activeClass = null, busyClass = null )
+    buttonBase(buttonColor)
+    fontStack( color: buttonColor, fontWeight: 400 )
+    background-color #FFF
+    border 2px solid buttonColor
+
     &:hover
     &:focus
-    &.active
         background-color lightness(buttonColor, 93%)
+        color buttonColor
+
+    if activeClass
+        &{activeClass}
+            background-color lightness(buttonColor, 93%)
+            color buttonColor
+
+    if busyClass
+        &{busyClass}
+            busyState(buttonColor)
 
     &[disabled]
     &[disabled="disabled"]
     &[aria-disabled="true"]
-    &.disabled
         disabledColor = rgba(buttonColor, .5)
 
         background-color transparent
@@ -63,31 +93,22 @@ button( buttonColor = baseButtonColor )
         cursor not-allowed
         outline none
 
-    &.busy
-        cursor wait
+filledButton( buttonColor = baseButtonColor, activeClass = null, busyClass = null )
+    buttonBase(buttonColor)
+    textColor = #FFF
+    if (light(buttonColor))
+        textColor = #000
+    fontStack(color: textColor, fontWeight: 400)
+    background-color buttonColor
 
-        &:after
-            stroke = 3px
+    &:hover
+    &:focus
+        background-color darken(buttonColor, 20%)
 
-            border-top stroke solid buttonColor
-            border-right @border-top
-            border-bottom stroke solid transparent
-            border-left @border-bottom
-            border-radius 50%
-            content " "
-            display inline-block
-            height 1em
-            margin-left .25em
-            width @height
-            vertical-align middle
-            rotation()
-
-    &.primary
-        background-color buttonColor
-        border-color buttonColor
-        color #FFF
-
-        &:hover
-        &:focus
-        &.active
+    if activeClass
+        &{activeClass}
             background-color darken(buttonColor, 20%)
+
+    if busyClass
+        &{busyClass}
+            busyState(textColor)

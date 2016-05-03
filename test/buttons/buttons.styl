@@ -11,16 +11,19 @@ resets = true
     width 100vw
 
 .default-button
-    button()
+    simpleButton()
 
 .pink-button
-    button(deeppink)
+    simpleButton(deeppink, selector() + --active, selector() + --busy)
 
-.midnight-blue-button
-    button(#003366)
+.simple-maize-button
+    simpleButton(#f8c649)
 
-.scarlet-button
-    button(#D50032)
+.filled-maize-button
+    filledButton(#f8c649, selector() + --active, selector() + --busy)
+
+.filled-midnight-blue-button
+    filledButton(#003366, selector() + --active, selector() + --busy)
 
 .separator
     margin-bottom 3em
