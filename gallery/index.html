@@ -371,7 +371,7 @@ background-size 400px 300px
                 <dl>
                     <dt><code>zebraList(color)</code></dt>
                     <dd>
-                        Converts to zebra list. Every other row will have a different background color, granding readability. Accepts one argument.
+                        Converts to zebra list. Every other row will have a different background color, granting readability. Accepts one argument.
                         <dl>
                             <dt>color</dt>
                             <dd>The background color to apply to zebra rows.</dd>
@@ -455,17 +455,43 @@ background-size 400px 300px
         <section>
             <h2>Buttons</h2>
             <p>Every website or application has some kind of button.
-                Blackjack sets up an easy to invoke base button. It also includes a some helpers when styling buttons.</p>
+                Blackjack sets up some base mixins for making buttons.
+                These buttons are meant to be a starting point for your project.
+                They are intended to maximize usability and readability with a simple visual style.
+                Some projects will want to modify, extend, or replace the provided buttons somewhere in their timeline.</p>
+            <p>Buttons come in two ways: simple and filled. A simple button has a border with a white background.
+                A filled button has a solid background with text that contrasts with the given color.
+                You can start with whatever looks best for your project.</p>
+            <p>The best feature of these buttons is they come with additional states that are completely opt-in.
+                Providing class names for states will add those states to the button definition.
+                Without them, they are skipped, so you never have buttons that are bloated with many states
+                and rules you never plan on using.</p>
 
             <div class="doc-wrapper">
                 <h3>API</h3>
                 <dl>
-                    <dt><code>button( buttonColor )</code></dt>
+                    <dt><code>simpleButton( buttonColor, activeClass, busyClass )</code></dt>
                     <dd>
-                        <p>Styles the element to look like a Blackjack button.</p>
+                        <p>Styles the element to look like a simple button with a border.</p>
                         <dl>
                             <dt>buttonColor</dt>
-                            <dd>Used to style the button. The border and text will be based on this color.</dd>
+                            <dd>Used to style the button. The border and text will be based on this color. <strong>Default: baseButtonColor</strong></dd>
+                            <dt>activeClass</dt>
+                            <dd>Optional argument. Give a class to be used that will be the "active" state of the button.</dd>
+                            <dt>busyClass</dt>
+                            <dd>Optional argument. Give a class to be used that will be the "busy" state of the button.</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>filledButton( buttonColor, activeClass, busyClass )</code></dt>
+                    <dd>
+                        <p>Styles the element to look like a filled button with contrasting text.</p>
+                        <dl>
+                            <dt>buttonColor</dt>
+                            <dd>Used to style the button. The background color of the button will be used with this. <strong>Default: baseButtonColor</strong></dd>
+                            <dt>activeClass</dt>
+                            <dd>Optional argument. Give a class to be used that will be the "active" state of the button.</dd>
+                            <dt>busyClass</dt>
+                            <dd>Optional argument. Give a class to be used that will be the "busy" state of the button.</dd>
                         </dl>
                     </dd>
                     <dt><code>$buttonReset</code></dt>
@@ -482,14 +508,19 @@ background-size 400px 300px
             </div>
 
             <h3>Examples</h3>
-            <button class="button" type="button">Button</button>
-            <button class="button active" type="button">Active Button</button>
-            <button class="button" disabled="disabled" type="button">Disabled Button</button>
-            <a class="button" href="https://angularjs.org/">Anchor Button</a>
-            <button class="busy" type="button">Busy Button</button>
-            <button class="info" type="button">Info</button>
-            <button class="success" type="button">Success</button>
-            <button class="error" type="button">Error</button>
+            <div>
+                Stylus: <code><pre>.button
+    simpleButton()</pre></code>
+                HTML: <code><pre>&#x3C;button class=&#x22;button&#x22;&#x3E;Button&#x3C;/button&#x3E;</pre></code>
+                Result: <button class="button" type="button">Button</button>
+            </div>
+
+            <div>
+                Stylus: <code><pre>.pink-button
+    simpleButton(deeppink)</pre></code>
+                HTML: <code><pre>&#x3C;button class=&#x22;pink-button&#x22;&#x3E;Button&#x3C;/button&#x3E;</pre></code>
+                Result: <button class="pink-button" type="button">Button</button>
+            </div>
         </section>
 
     </div>

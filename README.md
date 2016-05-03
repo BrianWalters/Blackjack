@@ -38,7 +38,8 @@ Blackjack is built to never output any CSS unless one of its mixins or placehold
 * pulse()
 * hop()
 * $buttonReset
-* button()
+* simpleButton()
+* filledButton()
 * $field / field()
 * hyperlink()
 * zebraList()
